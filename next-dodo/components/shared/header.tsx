@@ -23,7 +23,7 @@ export const Header: React.FC<PropsType> = ({ className }) => {
         <div className="flex items-center gap-3">
           <Button variant="outline" className="flex items-center gap-1">
             <User size={16} />
-            Войти
+            Log in
           </Button>
           <div>
             <Button className="group relative">
