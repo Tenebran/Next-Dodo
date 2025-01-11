@@ -29,14 +29,27 @@ const CheckboxFiltersGroup: React.FC<Props> = ({
   defaultValue,
 }) => {
   const [showAll, setShowAll] = useState(false);
-  const list = showAll ? items : defaultItem?.slice(0, limit);
+  const [searchValue, setSeatchValue] = useState('');
+
+  const onChangeSearchInput = (value: string) => {
+    setSeatchValue(value);
+  };
+
+  const list = showAll
+    ? items.filter((item) => item.text.toLowerCase().includes(searchValue.toLocaleLowerCase()))
+    : defaultItem.slice(0, limit);
 
   return (
     <div className={cn('', className)}>
       <p className="font-bold mb-3">{title}</p>
       {showAll && (
         <div className="mb-5">
-          <Input placeholder={searchInputPlaceholder} className=" bg-gray-50 border-none" />
+          <Input
+            placeholder={searchInputPlaceholder}
+            className=" bg-gray-50 border-none"
+            onChange={(e) => onChangeSearchInput(e.target.value)}
+            value={searchValue}
+          />
         </div>
       )}
 
