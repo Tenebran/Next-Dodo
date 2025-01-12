@@ -68,7 +68,7 @@ export default function Home() {
                     items: [{ price: 5.5 }],
                   },
                 ]}
-                categoryId={0}
+                categoryId={1}
               />
               <ProductsGroupList
                 title={'Комбо'}
@@ -122,8 +122,8 @@ export default function Home() {
                     items: [{ price: 5.5 }],
                   },
                 ]}
-                categoryId={0}
-              />{' '}
+                categoryId={2}
+              />
               <ProductsGroupList
                 title={'Завтраки'}
                 items={[
@@ -176,7 +176,7 @@ export default function Home() {
                     items: [{ price: 5.5 }],
                   },
                 ]}
-                categoryId={0}
+                categoryId={3}
               />
             </div>
           </div>
