@@ -10,20 +10,12 @@ export default function Home() {
       <TopBar />
 
       <Container className="pb-14 mt-10">
-        <div className="flex gap-[60px]">
+        <div className="flex gap-[80px]">
           <div className="w-[250px]">
             <Filters />
           </div>
           <div className="flex-1">
             <div className="flex flex-col gap-16">
-              {/* <ProductCard
-                imageUrl={
-                  'https://media.dodostatic.com/image/r:292x292/11ef0286069492ba911c4d3b3376436c.avif'
-                }
-                id={0}
-                name={'Чисбургер Пицца'}
-                price={5.5}
-              /> */}
               <ProductsGroupList
                 title={'Пиццы'}
                 items={[
@@ -51,6 +43,90 @@ export default function Home() {
                     price: 5.5,
                     items: [{ price: 5.5 }],
                   },
+                  {
+                    id: 1,
+                    name: 'Чизбургер пицца',
+                    imageUrl:
+                      'https://media.dodostatic.com/image/r:292x292/11ef0286069492ba911c4d3b3376436c.avif',
+                    price: 5.5,
+                    items: [{ price: 5.5 }],
+                  },
+                  {
+                    id: 1,
+                    name: 'Чизбургер пицца',
+                    imageUrl:
+                      'https://media.dodostatic.com/image/r:292x292/11ef0286069492ba911c4d3b3376436c.avif',
+                    price: 5.5,
+                    items: [{ price: 5.5 }],
+                  },
+                  {
+                    id: 1,
+                    name: 'Чизбургер пицца',
+                    imageUrl:
+                      'https://media.dodostatic.com/image/r:292x292/11ef0286069492ba911c4d3b3376436c.avif',
+                    price: 5.5,
+                    items: [{ price: 5.5 }],
+                  },
+                ]}
+                categoryId={0}
+              />
+              <ProductsGroupList
+                title={'Комбо'}
+                items={[
+                  {
+                    id: 1,
+                    name: 'Чизбургер пицца',
+                    imageUrl:
+                      'https://media.dodostatic.com/image/r:292x292/11ef0286069492ba911c4d3b3376436c.avif',
+                    price: 5.5,
+                    items: [{ price: 5.5 }],
+                  },
+                  {
+                    id: 1,
+                    name: 'Чизбургер пицца',
+                    imageUrl:
+                      'https://media.dodostatic.com/image/r:292x292/11ef0286069492ba911c4d3b3376436c.avif',
+                    price: 5.5,
+                    items: [{ price: 5.5 }],
+                  },
+                  {
+                    id: 1,
+                    name: 'Чизбургер пицца',
+                    imageUrl:
+                      'https://media.dodostatic.com/image/r:292x292/11ef0286069492ba911c4d3b3376436c.avif',
+                    price: 5.5,
+                    items: [{ price: 5.5 }],
+                  },
+                  {
+                    id: 1,
+                    name: 'Чизбургер пицца',
+                    imageUrl:
+                      'https://media.dodostatic.com/image/r:292x292/11ef0286069492ba911c4d3b3376436c.avif',
+                    price: 5.5,
+                    items: [{ price: 5.5 }],
+                  },
+                  {
+                    id: 1,
+                    name: 'Чизбургер пицца',
+                    imageUrl:
+                      'https://media.dodostatic.com/image/r:292x292/11ef0286069492ba911c4d3b3376436c.avif',
+                    price: 5.5,
+                    items: [{ price: 5.5 }],
+                  },
+                  {
+                    id: 1,
+                    name: 'Чизбургер пицца',
+                    imageUrl:
+                      'https://media.dodostatic.com/image/r:292x292/11ef0286069492ba911c4d3b3376436c.avif',
+                    price: 5.5,
+                    items: [{ price: 5.5 }],
+                  },
+                ]}
+                categoryId={0}
+              />{' '}
+              <ProductsGroupList
+                title={'Завтраки'}
+                items={[
                   {
                     id: 1,
                     name: 'Чизбургер пицца',
