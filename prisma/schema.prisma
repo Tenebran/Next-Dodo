@@ -19,9 +19,9 @@ model User {
     order            Order[]
     verificationCode VerificationCode?
     role             UserRole          @default(USER)
-    cartId           Int
-    provider         String
-    providerId       String
+    provider         String?
+    providerId       String?
+    verefied         DateTime
 }
 
 model Categoty {
@@ -31,20 +31,19 @@ model Categoty {
 }
 
 model Product {
-    id           Int           @id @default(autoincrement())
-    name         String
-    imageUrl     String
-    createdAt    DateTime      @default(now())
-    updatedAt    DateTime      @updatedAt
+    id          Int           @id @default(autoincrement())
+    name        String
+    imageUrl    String
+    createdAt   DateTime      @default(now())
+    updatedAt   DateTime      @updatedAt
     // Finds a category in Category using categoryId to compare id with the id in the category
     // The id in the category is exactly the same as the id in categoryId, and references: [id] 
     // specifies what we extract from categoryId (one to many)
-    categoty     Categoty?     @relation(fields: [categotyId], references: [id])
+    categoty    Categoty?     @relation(fields: [categoryId], references: [id])
     // (many to many)
-    ingredient   Ingredient?   @relation(fields: [ingredientId], references: [id])
-    categotyId   Int?
-    ingredientId Int
-    items        ProductItem[]
+    ingredients Ingredient[]
+    categoryId  Int?
+    items       ProductItem[]
 }
 
 model Ingredient {
