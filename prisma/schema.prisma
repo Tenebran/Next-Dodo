@@ -4,118 +4,169 @@ generator client {
 
 datasource db {
     provider  = "postgresql"
-    url       = env("POSTGRES_URL")
-    directUrl = env("POSTGRES_URL_NON_POOLING")
+    url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+    directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
 model User {
-    id               Int               @id @default(autoincrement())
-    fullName         String
-    email            String            @unique
-    password         String
-    createdAt        DateTime          @default(now())
-    updatedAt        DateTime          @updatedAt
+    id Int @id @default(autoincrement())
+
+    fullName String
+    email    String    @unique
+    password String
+    role     UserRole  @default(USER)
+    verified DateTime?
+
+    provider   String?
+    providerId String?
+
     cart             Cart?
-    order            Order[]
+    orders           Order[]
     verificationCode VerificationCode?
-    role             UserRole          @default(USER)
-    provider         String?
-    providerId       String?
-    verefied         DateTime
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
 
-model Categoty {
+model Category {
     id       Int       @id @default(autoincrement())
     name     String    @unique
     products Product[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
 
 model Product {
-    id          Int           @id @default(autoincrement())
-    name        String
-    imageUrl    String
-    createdAt   DateTime      @default(now())
-    updatedAt   DateTime      @updatedAt
-    // Finds a category in Category using categoryId to compare id with the id in the category
-    // The id in the category is exactly the same as the id in categoryId, and references: [id] 
-    // specifies what we extract from categoryId (one to many)
-    categoty    Categoty?     @relation(fields: [categoryId], references: [id])
-    // (many to many)
-    ingredients Ingredient[]
-    categoryId  Int?
-    items       ProductItem[]
-}
+    id Int @id @default(autoincrement())
 
-model Ingredient {
-    id         Int        @id @default(autoincrement())
-    name       String
-    price      Int
-    imageUrl   String
-    products   Product[]
-    createdAt  DateTime   @default(now())
-    updatedAt  DateTime   @updatedAt
-    cartItem   CartItem[]
-    cartItemId Int?
+    name     String
+    imageUrl String
+
+    ingredients Ingredient[]
+    items       ProductItem[]
+
+    category   Category @relation(fields: [categoryId], references: [id])
+    categoryId Int
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
 
 model ProductItem {
-    id        Int        @id @default(autoincrement())
+    id Int @id @default(autoincrement())
+
     price     Int
     size      Int?
     pizzaType Int?
+
+    cartItems CartItem[]
+
+    product   Product @relation(fields: [productId], references: [id])
     productId Int
-    product   Product    @relation(fields: [productId], references: [id])
-    cartItem  CartItem[]
-    createdAt DateTime   @default(now())
-    updatedAt DateTime   @updatedAt
+}
+
+model Ingredient {
+    id Int @id @default(autoincrement())
+
+    name     String
+    price    Int
+    imageUrl String
+
+    products  Product[]
+    cartItems CartItem[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
 
 model Cart {
-    id          Int        @id @default(autoincrement())
-    user        User?      @relation(fields: [userId], references: [id])
-    userId      Int?       @unique
-    totalAmount Int        @default(0)
-    token       String?
-    items       CartItem[]
-    createdAt   DateTime   @default(now())
-    updatedAt   DateTime   @updatedAt
+    id Int @id @default(autoincrement())
+
+    user   User? @relation(fields: [userId], references: [id])
+    userId Int?  @unique
+
+    items CartItem[]
+
+    token String
+
+    totalAmount Int @default(0)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
 
 model CartItem {
-    id            Int          @id @default(autoincrement())
-    productItem   ProductItem  @relation(fields: [productItemId], references: [id])
+    id Int @id @default(autoincrement())
+
+    cart   Cart @relation(fields: [cartId], references: [id])
+    cartId Int
+
+    productItem   ProductItem @relation(fields: [productItemId], references: [id])
     productItemId Int
-    cart          Cart         @relation(fields: [cartId], references: [id])
-    cartId        Int
-    quantity      Int
-    ingredients   Ingredient[]
-    createdAt     DateTime     @default(now())
-    updatedAt     DateTime     @updatedAt
+
+    quantity Int @default(1)
+
+    ingredients Ingredient[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
 
 model Order {
-    id         Int         @id @default(autoincrement())
-    user       User?       @relation(fields: [userId], references: [id])
-    userId     Int?
-    token      String
-    totalAmout Int
-    status     OrderStatus
-    paymentId  String?
-    items      Json
-    fullname   String
-    address    String
-    email      String
-    phone      String
-    comment    String
-    createdAt  DateTime    @default(now())
-    updatedAt  DateTime    @updatedAt
+    id Int @id @default(autoincrement())
+
+    user   User? @relation(fields: [userId], references: [id])
+    userId Int?
+
+    token String
+
+    totalAmount Int
+    status      OrderStatus
+    paymentId   String?
+
+    items Json
+
+    fullName String
+    email    String
+    phone    String
+    address  String
+    comment  String?
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
 
 model VerificationCode {
-    id        Int      @id @default(autoincrement())
-    user      User     @relation(fields: [userId], references: [id])
-    userId    Int      @unique
-    code      String
+    id Int @id @default(autoincrement())
+
+    user   User @relation(fields: [userId], references: [id])
+    userId Int  @unique
+
+    code String
+
+    createdAt DateTime @default(now())
+
+    @@unique([userId, code])
+}
+
+model Story {
+    id              Int    @id @default(autoincrement())
+    previewImageUrl String
+
+    items StoryItem[]
+
+    createdAt DateTime @default(now())
+}
+
+model StoryItem {
+    id Int @id @default(autoincrement())
+
+    storyId Int
+    story   Story @relation(fields: [storyId], references: [id])
+
+    sourceUrl String
+
     createdAt DateTime @default(now())
 }
 
