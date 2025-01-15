@@ -3,7 +3,7 @@
 import { cn } from '@/lib/utils';
 import React, { useState } from 'react';
 import { FilterChecboxProps, FilterCheckbox } from './filterCheckbox';
-import { Input } from '../ui';
+import { Input, Skeleton } from '../ui';
 
 type Item = FilterChecboxProps;
 
@@ -16,6 +16,7 @@ interface Props {
   onChange?: (value: string[]) => void;
   defaultValue?: string[];
   className?: string;
+  loading: boolean;
 }
 
 const CheckboxFiltersGroup: React.FC<Props> = ({
@@ -27,6 +28,7 @@ const CheckboxFiltersGroup: React.FC<Props> = ({
   onChange,
   className,
   defaultValue,
+  loading,
 }) => {
   const [showAll, setShowAll] = useState(false);
   const [searchValue, setSeatchValue] = useState('');
@@ -34,6 +36,18 @@ const CheckboxFiltersGroup: React.FC<Props> = ({
   const onChangeSearchInput = (value: string) => {
     setSeatchValue(value);
   };
+
+  if (loading) {
+    return (
+      <div className={cn('', className)}>
+        <p className="font-bold mb-3">{title}</p>
+        {...Array(limit)
+          .fill(0)
+          .map((_, index) => <Skeleton key={index} className="h-6 mb-4 rounded-[8px]" />)}
+        <Skeleton className="w-28 h-6 mb-4 rounded-[8px]" />
+      </div>
+    );
+  }
 
   const list = showAll
     ? items.filter((item) => item.text.toLowerCase().includes(searchValue.toLocaleLowerCase()))
@@ -64,14 +78,14 @@ const CheckboxFiltersGroup: React.FC<Props> = ({
             onCheckedChange={(ids) => console.log(ids)}
           />
         ))}
-        {items.length > limit && (
-          <div className={showAll ? 'border-t-neutral-100 mt-4' : ''}>
-            <button onClick={() => setShowAll(!showAll)} className="text-primary mt-3">
-              {showAll ? 'Скрыть' : '+ Показать все'}
-            </button>
-          </div>
-        )}
       </div>
+      {items.length > limit && (
+        <div className={showAll ? 'border-t-neutral-100 mt-4' : ''}>
+          <button onClick={() => setShowAll(!showAll)} className="text-primary mt-3">
+            {showAll ? 'Скрыть' : '+ Показать все'}
+          </button>
+        </div>
+      )}
     </div>
   );
 };
