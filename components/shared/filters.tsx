@@ -3,47 +3,22 @@
 import { cn } from '@/lib/utils';
 import React from 'react';
 import { Title } from './title';
-import { FilterCheckbox, RangeSlider } from '.';
+import { RangeSlider } from '.';
 import { Input } from '../ui';
 import { CheckboxFiltersGroup } from './checkbox-filters-group';
-import { useFilterIngredients } from '@/hooks/useFilterIngredients';
-import { useSet } from 'react-use';
+import { useFilters, useIngredient, useQueryFilters } from '@/hooks';
 
 interface Props {
   className?: string;
 }
 
-interface PriceProps {
-  priceFrom: number;
-  priceTo: number;
-}
-
 const Filters: React.FC<Props> = ({ className }) => {
-  const { ingredients, loading, selectedIngredients, onAddId } = useFilterIngredients();
-  const [sizes, { toggle: toogleSizes }] = useSet(new Set<string>([]));
-  const [pizzaTypes, { toggle: tooglePizzaTypes }] = useSet(new Set<string>([]));
-  const [prices, setPrice] = React.useState<PriceProps>({
-    priceFrom: 0,
-    priceTo: 1000,
-  });
-  const filters = {
-    ...prices,
-    ...pizzaTypes,
-    ...sizes,
-    ...ingredients,
-  };
+  const { ingredients, loading } = useIngredient();
+  const filters = useFilters();
+
+  useQueryFilters(filters);
 
   const items = ingredients.map((item) => ({ value: String(item.id), text: item.name }));
-  const updatePrice = (name: keyof PriceProps, value: number) => {
-    setPrice({
-      ...prices,
-      [name]: value,
-    });
-  };
-
-  React.useEffect(() => {
-    console.log(prices, pizzaTypes, sizes, ingredients, selectedIngredients);
-  }, [prices, pizzaTypes, sizes, ingredients, selectedIngredients]);
 
   return (
     <div className={cn('', className)}>
@@ -59,8 +34,8 @@ const Filters: React.FC<Props> = ({ className }) => {
             { text: 'Традиционное', value: '2' },
           ]}
           loading={loading}
-          onCklickCheckbox={tooglePizzaTypes}
-          selected={pizzaTypes}
+          onCklickCheckbox={filters.setPizzaTypes}
+          selected={filters.pizzaTypes}
           name="pizzaTypes"
         />
 
@@ -74,8 +49,8 @@ const Filters: React.FC<Props> = ({ className }) => {
             { text: '40 см', value: '40' },
           ]}
           loading={loading}
-          onCklickCheckbox={toogleSizes}
-          selected={sizes}
+          onCklickCheckbox={filters.setSizes}
+          selected={filters.sizes}
           name="sizes"
         />
       </div>
@@ -87,24 +62,24 @@ const Filters: React.FC<Props> = ({ className }) => {
             min={0}
             max={1000}
             defaultValue={0}
-            value={String(prices.priceFrom)}
-            onChange={(e) => updatePrice('priceFrom', e.target.valueAsNumber || 0)}
+            value={String(filters.prices.priceFrom)}
+            onChange={(e) => filters.updatePrice('priceFrom', e.target.valueAsNumber || 0)}
           />
           <Input
             type="number"
             placeholder="1000"
             min={100}
             max={1000}
-            value={String(prices.priceTo)}
-            onChange={(e) => updatePrice('priceTo', e.target.valueAsNumber || 0)}
+            value={String(filters.prices.priceTo)}
+            onChange={(e) => filters.updatePrice('priceTo', e.target.valueAsNumber || 0)}
           />
         </div>
         <RangeSlider
           min={0}
           max={1000}
           step={10}
-          value={[prices.priceFrom, prices.priceTo]}
-          onValueChange={([priceFrom, priceTo]) => setPrice({ priceFrom, priceTo })}
+          value={[filters.prices.priceFrom || 0, filters.prices.priceTo || 1000]}
+          onValueChange={([priceFrom, priceTo]) => filters.setPrices({ priceFrom, priceTo })}
         />
       </div>
 
@@ -115,8 +90,8 @@ const Filters: React.FC<Props> = ({ className }) => {
         defaultItem={items.slice(0, 6)}
         items={items}
         loading={loading}
-        onCklickCheckbox={onAddId}
-        selected={selectedIngredients}
+        onCklickCheckbox={filters.setIngredients}
+        selected={filters.selectedIngredients}
         name="ingredients"
       />
     </div>

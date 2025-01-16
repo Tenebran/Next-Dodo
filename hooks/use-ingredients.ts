@@ -1,19 +1,10 @@
 import { Api } from '@/services/api.client';
 import { Ingredient } from '@prisma/client';
 import React from 'react';
-import { useSet } from 'react-use';
 
-interface RetunsProps {
-  ingredients: Ingredient[];
-  loading: boolean;
-  selectedIngredients: Set<string>;
-  onAddId: (id: string) => void;
-}
-export const useFilterIngredients = (): RetunsProps => {
+export const useIngredient = () => {
   const [ingredients, setIngredients] = React.useState<Ingredient[]>([]);
   const [loading, setLoading] = React.useState(false);
-
-  const [selectedIngredients, { toggle }] = useSet(new Set<string>([]));
 
   React.useEffect(() => {
     async function fetchIngredients() {
@@ -30,5 +21,5 @@ export const useFilterIngredients = (): RetunsProps => {
     fetchIngredients();
   }, []);
 
-  return { ingredients, loading, selectedIngredients, onAddId: toggle };
+  return { ingredients, loading };
 };
