@@ -24,11 +24,11 @@ const ProductCard: React.FC<Props> = ({ className, imageUrl, id, name, price }) 
         <p className="text-sm text-gray-400">
           Ципленок, моцарелла, сыр чеддер и пармезан, сырный соус, томаты, соус альфредо, чеснок
         </p>
-        <div className="flex justify-between items-center mt-4">
+        <div className="flex justify-between items-center mt-4 bg-co">
           <span className="text-[20px]">
             от <b>{price} $</b>
           </span>
-          <Button className="text-base font-bold">
+          <Button className="text-base font-bold" variant="secondary">
             <Plus size={20} className="mr-1" />
             Добавить
           </Button>
