@@ -55,15 +55,18 @@ export const useFilters = (): ReturnProps => {
     });
   };
 
-  return {
-    sizes,
-    pizzaTypes,
-    selectedIngredients,
-    prices,
-    setPrices,
-    updatePrice,
-    setPizzaTypes: React.useCallback(tooglePizzaTypes, []),
-    setIngredients: React.useCallback(toggleIngredients, []),
-    setSizes: React.useCallback(toogleSizes, []),
-  };
+  return React.useMemo(
+    () => ({
+      sizes,
+      pizzaTypes,
+      selectedIngredients,
+      prices,
+      setPrices,
+      updatePrice,
+      setPizzaTypes: tooglePizzaTypes,
+      setIngredients: toggleIngredients,
+      setSizes: toogleSizes,
+    }),
+    [prices, sizes, pizzaTypes, selectedIngredients]
+  );
 };
