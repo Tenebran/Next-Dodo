@@ -13,8 +13,6 @@ interface Props {
 export const Categories: React.FC<Props> = ({ clasName, items }) => {
   const categoryActiveId = useCategoryStore((state) => state.activeId);
 
-  console.log('categoryActiveId', categoryActiveId);
-
   return (
     <div className={cn('inline-flex gap-1 bg-gray-50 p-1 rounded-2xl', clasName)}>
       {items.map(({ name, id }) => {

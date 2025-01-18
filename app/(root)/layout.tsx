@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Next Dodo',
 };
 
-export default function RootLayout({
+export default function HomeLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
