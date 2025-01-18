@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { useIntersection } from 'react-use';
 import { Title } from './title';
 import { ProductCard } from './product-card';
@@ -22,13 +22,13 @@ const ProductsGroupList: React.FC<Props> = ({
   listClassName,
   categoryId,
 }) => {
-  const itersectionRef = useRef<HTMLDivElement | null>(null);
+  const itersectionRef = React.useRef<HTMLDivElement | null>(null);
   const serActiveCategoryId = useCategoryStore((state) => state.setActiveId);
   const intersection = useIntersection(itersectionRef as React.RefObject<HTMLDivElement>, {
     threshold: 0.4,
   });
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (intersection?.isIntersecting) {
       serActiveCategoryId(categoryId);
     }
