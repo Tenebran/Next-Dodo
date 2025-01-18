@@ -1,4 +1,4 @@
-import { Container, ProductImage, Title } from '@/components/shared';
+import { Container, GroupVariants, ProductImage, Title } from '@/components/shared';
 import { prisma } from '@/prisma/prisma-client';
 import { notFound } from 'next/navigation';
 import React from 'react';
@@ -19,6 +19,14 @@ export default async function ProductPage({ params: { id } }: { params: { id: st
           <p className="text-gray-400">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, accusantium.
           </p>
+          <GroupVariants
+            selectedValue="2"
+            items={[
+              { name: 'Маленькая', value: '1' },
+              { name: 'Средняя ', value: '2' },
+              { name: 'Большая', value: '3' },
+            ]}
+          />
         </div>
       </div>
     </Container>

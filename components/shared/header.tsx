@@ -7,7 +7,7 @@ import { ArrowRight, ShoppingCart, User } from 'lucide-react';
 import Link from 'next/link';
 
 interface PropsType {
-  className: string;
+  className?: string;
 }
 
 export const Header: React.FC<PropsType> = ({ className }) => {
