@@ -12,3 +12,4 @@ export { ProductsGroupList } from './products-group-list';
 export { ProductCard } from './product-card';
 export { SeachInput } from './seach-input';
 export { ProductImage } from './product-image';
+export { GroupVariants } from './group-variants';
