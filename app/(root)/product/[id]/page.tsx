@@ -2,7 +2,11 @@ import { prisma } from '@/prisma/prisma-client';
 import { notFound } from 'next/navigation';
 import { Container, GroupVariants, ProductImage, Title } from '@/components/shared';
 
-export default async function ProductPage({ params: { id } }: { params: { id: string } }) {
+export const dynamicParams = true;
+
+export default async function ProductPage({ params }: { params: { id: string } }) {
+  const { id } = await params;
+
   const product = await prisma.product.findUnique({
     where: { id: Number(id) },
     include: { ingredients: true, items: true },

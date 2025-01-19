@@ -1,8 +1,12 @@
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+'use client';
+
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
 import React from 'react';
-import { Title } from '../title';
 import { Product } from '@prisma/client';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import { useRouter } from 'next/navigation';
+import { ChoosePizzaForm } from '..';
 
 interface Props {
   className?: string;
@@ -10,15 +14,20 @@ interface Props {
 }
 
 const ChooseProductModal: React.FC<Props> = ({ className, product }) => {
-  console.log('hello modal', product);
+  const router = useRouter();
+
   return (
-    <Dialog open={Boolean(product)}>
+    <Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
       <DialogContent
         className={cn(
           'p-0 w-[1060px] max-w-[1060px] min-h-[500px] bg-white overflow-hidden',
           className
         )}>
-        {product.name}
+        <VisuallyHidden>
+          <DialogTitle></DialogTitle>
+          <DialogDescription></DialogDescription>
+        </VisuallyHidden>
+        <ChoosePizzaForm product={product} />
       </DialogContent>
     </Dialog>
   );
