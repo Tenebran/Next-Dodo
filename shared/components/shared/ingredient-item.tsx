@@ -11,7 +11,7 @@ interface Props {
   onClick?: () => void;
 }
 
-const Ingredient: React.FC<Props> = ({ className, imageUrl, name, active, price, onClick }) => {
+const IngredientItem: React.FC<Props> = ({ className, imageUrl, name, active, price, onClick }) => {
   return (
     <div
       className={cn(
@@ -31,4 +31,4 @@ const Ingredient: React.FC<Props> = ({ className, imageUrl, name, active, price,
   );
 };
 
-export { Ingredient };
+export { IngredientItem };

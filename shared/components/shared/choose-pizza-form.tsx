@@ -1,10 +1,11 @@
 import { cn } from '@/shared/lib/utils';
 import React from 'react';
 import { PizzaImage } from './pizza-image';
-import { GroupVariants, Title } from '.';
+import { GroupVariants, IngredientItem, Title } from '.';
 import { Button } from '../ui';
 import { PizzaSizes, pizzaSizes, pizzaTypes, PizzaTypes } from '@/shared/constans/pizza';
 import { Ingredient } from '@prisma/client';
+import { useSet } from 'react-use';
 
 interface Props {
   imageUrl: string;
@@ -26,7 +27,9 @@ const ChoosePizzaForm: React.FC<Props> = ({
 }) => {
   const [size, setSize] = React.useState<PizzaSizes>(20);
   const [type, setType] = React.useState<PizzaTypes>(1);
-  console.log(ingredients);
+
+  const [selectedIngredients, { toggle: addIngredient }] = useSet(new Set<number>([]));
+
   const textDetails =
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, accusantium.';
   const totalPrice = 100;
@@ -50,9 +53,22 @@ const ChoosePizzaForm: React.FC<Props> = ({
           onClick={(value) => setType(Number(value) as PizzaTypes)}
           className="mt-5"
         />
-        <div className="grid grid-cols-3 gap-3"></div>
 
-        <Button className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
+        <div className="bg-gray-50 p-5 rounded-md h-[420px] overflow-auto scrollbar mt-5">
+          <div className="grid grid-cols-3 gap-3">
+            {ingredients.map((ingredient) => (
+              <IngredientItem
+                key={ingredient.id}
+                name={ingredient.name}
+                price={ingredient.price}
+                imageUrl={ingredient.imageUrl}
+                onClick={() => addIngredient(ingredient.id)}
+                active={selectedIngredients.has(ingredient.id)}
+              />
+            ))}
+          </div>
+        </div>
+        <Button className="h-[55px] px-10 text-base rounded-[18px] w-full mt-5">
           Добавить в корзину {totalPrice} $
         </Button>
       </div>
