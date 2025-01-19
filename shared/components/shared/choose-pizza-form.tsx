@@ -4,12 +4,13 @@ import { PizzaImage } from './pizza-image';
 import { GroupVariants, Title } from '.';
 import { Button } from '../ui';
 import { PizzaSizes, pizzaSizes, pizzaTypes, PizzaTypes } from '@/shared/constans/pizza';
+import { Ingredient } from '@prisma/client';
 
 interface Props {
   imageUrl: string;
   name: string;
   className?: string;
-  ingredients: any[];
+  ingredients: Ingredient[];
   items?: any[];
   onClickAdd?: VoidFunction;
   size?: 20 | 30 | 40;
@@ -25,7 +26,7 @@ const ChoosePizzaForm: React.FC<Props> = ({
 }) => {
   const [size, setSize] = React.useState<PizzaSizes>(20);
   const [type, setType] = React.useState<PizzaTypes>(1);
-
+  console.log(ingredients);
   const textDetails =
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, accusantium.';
   const totalPrice = 100;
@@ -49,6 +50,8 @@ const ChoosePizzaForm: React.FC<Props> = ({
           onClick={(value) => setType(Number(value) as PizzaTypes)}
           className="mt-5"
         />
+        <div className="grid grid-cols-3 gap-3"></div>
+
         <Button className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
           Добавить в корзину {totalPrice} $
         </Button>

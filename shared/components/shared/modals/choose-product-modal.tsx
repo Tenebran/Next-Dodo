@@ -34,7 +34,7 @@ const ChooseProductModal: React.FC<Props> = ({ className, product }) => {
           <ChoosePizzaForm
             name={product.name}
             imageUrl={product.imageUrl}
-            ingredients={[]}
+            ingredients={product.ingredients}
             items={[]}
             onClickAdd={() => {}}
           />
