@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/shared/lib/utils';
 import Link from 'next/link';
 import React from 'react';
 import { Title } from './title';

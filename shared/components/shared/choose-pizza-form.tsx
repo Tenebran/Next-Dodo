@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+import { cn } from '@/shared/lib/utils';
 import React from 'react';
 import { Product } from '@prisma/client';
 import { PizzaImage } from './pizza-image';
