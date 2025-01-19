@@ -4,28 +4,24 @@ generator client {
 
 datasource db {
     provider  = "postgresql"
-    url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
-    directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+    url       = env("POSTGRES_URL")
+    directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model User {
-    id Int @id @default(autoincrement())
-
-    fullName String
-    email    String    @unique
-    password String
-    role     UserRole  @default(USER)
-    verified DateTime?
-
-    provider   String?
-    providerId String?
-
+    id               Int               @id @default(autoincrement())
+    fullName         String
+    email            String            @unique
+    password         String
+    createdAt        DateTime          @default(now())
+    updatedAt        DateTime          @updatedAt
     cart             Cart?
-    orders           Order[]
+    order            Order[]
     verificationCode VerificationCode?
-
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    role             UserRole          @default(USER)
+    provider         String?
+    providerId       String?
+    verified         DateTime?
 }
 
 model Category {
@@ -53,6 +49,18 @@ model Product {
     updatedAt DateTime @updatedAt
 }
 
+model Ingredient {
+    id         Int        @id @default(autoincrement())
+    name       String
+    price      Int
+    imageUrl   String
+    products   Product[]
+    createdAt  DateTime   @default(now())
+    updatedAt  DateTime   @updatedAt
+    cartItem   CartItem[]
+    cartItemId Int?
+}
+
 model ProductItem {
     id Int @id @default(autoincrement())
 
@@ -64,20 +72,6 @@ model ProductItem {
 
     product   Product @relation(fields: [productId], references: [id])
     productId Int
-}
-
-model Ingredient {
-    id Int @id @default(autoincrement())
-
-    name     String
-    price    Int
-    imageUrl String
-
-    products  Product[]
-    cartItems CartItem[]
-
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
 }
 
 model Cart {
@@ -138,16 +132,11 @@ model Order {
 }
 
 model VerificationCode {
-    id Int @id @default(autoincrement())
-
-    user   User @relation(fields: [userId], references: [id])
-    userId Int  @unique
-
-    code String
-
+    id        Int      @id @default(autoincrement())
+    user      User     @relation(fields: [userId], references: [id])
+    userId    Int      @unique
+    code      String
     createdAt DateTime @default(now())
-
-    @@unique([userId, code])
 }
 
 model Story {

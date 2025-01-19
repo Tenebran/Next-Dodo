@@ -17,6 +17,7 @@ interface Props {
 const ChooseProductModal: React.FC<Props> = ({ className, product }) => {
   const router = useRouter();
 
+  console.log('product.ingredients', product.ingredients);
   const isPizzaForm = !!product.items[0].pizzaType;
 
   return (
@@ -35,8 +36,8 @@ const ChooseProductModal: React.FC<Props> = ({ className, product }) => {
             name={product.name}
             imageUrl={product.imageUrl}
             ingredients={product.ingredients}
-            items={[]}
-            onClickAdd={() => {}}
+            items={product.items}
+            onClickAddCart={() => {}}
           />
         ) : (
           <ChooseProductForm

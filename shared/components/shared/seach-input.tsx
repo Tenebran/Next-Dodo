@@ -26,9 +26,7 @@ const SeachInput: React.FC<Props> = ({ className }) => {
   );
 
   const onClikcItem = () => {
-    console.log('searchQuery', searchQuery);
     setSearchQuery('');
-    console.log('searchQuery', searchQuery);
     setFocused(false);
     setProducts([]);
   };

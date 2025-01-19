@@ -16,6 +16,8 @@ export default async function ProductModalPage({ params }: { params: { id: strin
     },
   });
 
+  console.log('product', product);
+
   if (!product) {
     return notFound();
   }

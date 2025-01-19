@@ -4,7 +4,7 @@ import { PizzaImage } from './pizza-image';
 import { GroupVariants, IngredientItem, Title } from '.';
 import { Button } from '../ui';
 import { PizzaSizes, pizzaSizes, pizzaTypes, PizzaTypes } from '@/shared/constans/pizza';
-import { Ingredient } from '@prisma/client';
+import { Ingredient, ProductItem } from '@prisma/client';
 import { useSet } from 'react-use';
 
 interface Props {
@@ -12,8 +12,8 @@ interface Props {
   name: string;
   className?: string;
   ingredients: Ingredient[];
-  items?: any[];
-  onClickAdd?: VoidFunction;
+  items: ProductItem[];
+  onClickAddCart?: VoidFunction;
   size?: 20 | 30 | 40;
 }
 
@@ -22,18 +22,21 @@ const ChoosePizzaForm: React.FC<Props> = ({
   imageUrl,
   name,
   ingredients,
-  itemsm,
-  onClickAdd,
+  items,
+  onClickAddCart,
 }) => {
   const [size, setSize] = React.useState<PizzaSizes>(20);
   const [type, setType] = React.useState<PizzaTypes>(1);
 
   const [selectedIngredients, { toggle: addIngredient }] = useSet(new Set<number>([]));
-
+  const pizzaPrice = items.find((item) => item.pizzaType === type && item.size === size)?.price;
+  console.log(pizzaPrice);
   const textDetails =
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, accusantium.';
   const totalPrice = 100;
 
+  console.log('ingredients', ingredients);
+  console.log(items);
   return (
     <div className={cn('flex flex-1', className)}>
       <PizzaImage imageUrl={imageUrl} size={size} />
@@ -69,7 +72,7 @@ const ChoosePizzaForm: React.FC<Props> = ({
           </div>
         </div>
         <Button className="h-[55px] px-10 text-base rounded-[18px] w-full mt-5">
-          Добавить в корзину {totalPrice} $
+          Добавить в корзину {pizzaPrice} $
         </Button>
       </div>
     </div>
