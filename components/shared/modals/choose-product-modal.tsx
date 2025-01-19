@@ -3,20 +3,22 @@
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
 import React from 'react';
-import { Product } from '@prisma/client';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { useRouter } from 'next/navigation';
-import { ChooseProductForm } from '..';
+import { ChoosePizzaForm, ChooseProductForm } from '..';
+import { ProductWithRelations } from '@/@types/prisma';
 
 interface Props {
   className?: string;
-  product: Product;
+  product: ProductWithRelations;
 }
 
 const ChooseProductModal: React.FC<Props> = ({ className, product }) => {
   const router = useRouter();
 
-  // const isPizzaForm = product.return(
+  const isPizzaForm = !!product.items[0].pizzaType;
+
+  return (
     <Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
       <DialogContent
         className={cn(
@@ -27,13 +29,21 @@ const ChooseProductModal: React.FC<Props> = ({ className, product }) => {
           <DialogTitle></DialogTitle>
           <DialogDescription></DialogDescription>
         </VisuallyHidden>
-        <ChooseProductForm
-          name={product.name}
-          imageUrl={product.imageUrl}
-          ingredients={[]}
-          items={[]}
-          onClickAdd={() => {}}
-        />
+        {isPizzaForm ? (
+          <ChoosePizzaForm
+            name={product.name}
+            imageUrl={product.imageUrl}
+            ingredients={[]}
+            items={[]}
+            onClickAdd={() => {}}
+          />
+        ) : (
+          <ChooseProductForm
+            name={product.name}
+            imageUrl={product.imageUrl}
+            onClickAdd={() => {}}
+          />
+        )}
       </DialogContent>
     </Dialog>
   );
