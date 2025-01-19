@@ -18,16 +18,10 @@ interface Props {
   defaultValue?: string;
   onClick?: (value: Variant['value']) => void;
   className?: string;
-  selectedValue?: Variant['value'];
+  value?: Variant['value'];
 }
 
-const GroupVariants: React.FC<Props> = ({
-  className,
-  items,
-  defaultValue,
-  onClick,
-  selectedValue,
-}) => {
+const GroupVariants: React.FC<Props> = ({ className, items, onClick, value }) => {
   return (
     <div className={cn('flex justify-between bg-[#f3f3f7] rounded-3xl P-1 select-none', className)}>
       {items.map((item) => (
@@ -37,7 +31,7 @@ const GroupVariants: React.FC<Props> = ({
           className={cn(
             'flex items-center justify-center cursor-pointer h-[30px] px-5 flex-1 rounded-3xl transition-all duration-400 text-sm',
             {
-              'bg-white shadow': item.value === selectedValue,
+              'bg-white shadow': item.value === value,
               'text-gray-500 opacity-50 pointer-events-none': item.disabled,
             }
           )}>
