@@ -4,7 +4,7 @@ import React from 'react';
 interface Props {
   className?: string;
   imageUrl: string;
-  size: number;
+  size: 20 | 30 | 40;
 }
 
 const ProductImage: React.FC<Props> = ({ className, imageUrl, size }) => {

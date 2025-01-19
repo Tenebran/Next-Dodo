@@ -6,7 +6,7 @@ import React from 'react';
 import { Product } from '@prisma/client';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { useRouter } from 'next/navigation';
-import { ChoosePizzaForm } from '..';
+import { ChooseProductForm } from '..';
 
 interface Props {
   className?: string;
@@ -16,7 +16,7 @@ interface Props {
 const ChooseProductModal: React.FC<Props> = ({ className, product }) => {
   const router = useRouter();
 
-  return (
+  // const isPizzaForm = product.return(
     <Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
       <DialogContent
         className={cn(
@@ -27,7 +27,13 @@ const ChooseProductModal: React.FC<Props> = ({ className, product }) => {
           <DialogTitle></DialogTitle>
           <DialogDescription></DialogDescription>
         </VisuallyHidden>
-        <ChoosePizzaForm product={product} />
+        <ChooseProductForm
+          name={product.name}
+          imageUrl={product.imageUrl}
+          ingredients={[]}
+          items={[]}
+          onClickAdd={() => {}}
+        />
       </DialogContent>
     </Dialog>
   );
