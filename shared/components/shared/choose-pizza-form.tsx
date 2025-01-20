@@ -7,8 +7,8 @@ import { GroupVariants, IngredientItem, Title } from '.';
 import { Button } from '../ui';
 import { mapPizzaTypes, PizzaSizes, pizzaTypes, PizzaTypes } from '@/shared/constans/pizza';
 import { Ingredient, ProductItem } from '@prisma/client';
-import { calcTotalPizzaPrice } from '@/shared/lib';
 import { usePizzaOptions } from '@/shared/hooks';
+import { getPizzaDetails } from '@/shared/lib/get-pizza-details';
 
 interface Props {
   imageUrl: string;
@@ -31,9 +31,14 @@ const ChoosePizzaForm: React.FC<Props> = ({
   const { size, type, setSize, setType, selectedIngredients, addIngredient, availablePizzas } =
     usePizzaOptions(items);
 
-  const totalPrice = calcTotalPizzaPrice(items, ingredients, size, type, selectedIngredients);
-
-  const textDetails = `${size} см,  ${mapPizzaTypes[type]} тесто`;
+  const { totalPrice, textDetails } = getPizzaDetails(
+    items,
+    ingredients,
+    size,
+    type,
+    selectedIngredients,
+    mapPizzaTypes
+  );
 
   const handlerClickAddCart = () => {
     onClickAddCart?.();
