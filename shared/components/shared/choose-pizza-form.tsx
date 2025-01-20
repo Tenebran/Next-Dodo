@@ -1,3 +1,5 @@
+'use client';
+
 import { cn } from '@/shared/lib/utils';
 import React from 'react';
 import { PizzaImage } from './pizza-image';
@@ -5,8 +7,8 @@ import { GroupVariants, IngredientItem, Title } from '.';
 import { Button } from '../ui';
 import { mapPizzaTypes, PizzaSizes, pizzaTypes, PizzaTypes } from '@/shared/constans/pizza';
 import { Ingredient, ProductItem } from '@prisma/client';
-import { useSet } from 'react-use';
-import { calcTotalPizzaPrice, getAvailable } from '@/shared/lib';
+import { calcTotalPizzaPrice } from '@/shared/lib';
+import { usePizzaOptions } from '@/shared/hooks';
 
 interface Props {
   imageUrl: string;
@@ -26,10 +28,8 @@ const ChoosePizzaForm: React.FC<Props> = ({
   items,
   onClickAddCart,
 }) => {
-  const [size, setSize] = React.useState<PizzaSizes>(20);
-  const [type, setType] = React.useState<PizzaTypes>(1);
-
-  const [selectedIngredients, { toggle: addIngredient }] = useSet(new Set<number>([]));
+  const { size, type, setSize, setType, selectedIngredients, addIngredient, availablePizzas } =
+    usePizzaOptions(items);
 
   const totalPrice = calcTotalPizzaPrice(items, ingredients, size, type, selectedIngredients);
 
@@ -38,18 +38,6 @@ const ChoosePizzaForm: React.FC<Props> = ({
   const handlerClickAddCart = () => {
     onClickAddCart?.();
   };
-
-  const availablePizzas = getAvailable(items, type);
-
-  React.useEffect(() => {
-    const currentSize = availablePizzas.find(
-      (item) => Number(item.value) === size && !item.disabled
-    );
-    const avaliblePizzaSize = availablePizzas.find((item) => !item.disabled);
-    if (!currentSize && avaliblePizzaSize) {
-      setSize(Number(avaliblePizzaSize.value) as PizzaSizes);
-    }
-  }, [type]);
 
   return (
     <div className={cn('flex flex-1', className)}>
