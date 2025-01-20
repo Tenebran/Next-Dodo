@@ -1,7 +1,9 @@
-import { Container, Filters, ProductsGroupList, Title, TopBar } from '@/shared/components/shared';
 import { prisma } from '@/prisma/prisma-client';
+import { Container, Filters, ProductsGroupList, Title, TopBar } from '@/shared/components/shared';
 
 export default async function Home() {
+  // await prisma.$executeRawUnsafe('DISCARD PLANS');
+
   const categories = await prisma.category.findMany({
     include: {
       products: {
@@ -12,6 +14,7 @@ export default async function Home() {
       },
     },
   });
+
   return (
     <>
       <Container className=" mt-10">
