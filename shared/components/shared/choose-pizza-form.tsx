@@ -12,6 +12,7 @@ import {
 } from '@/shared/constans/pizza';
 import { Ingredient, ProductItem } from '@prisma/client';
 import { useSet } from 'react-use';
+import { calcTotalPizzaPrice } from '@/shared/lib/calc-total-pizza-price';
 
 interface Props {
   imageUrl: string;
@@ -35,14 +36,8 @@ const ChoosePizzaForm: React.FC<Props> = ({
   const [type, setType] = React.useState<PizzaTypes>(1);
 
   const [selectedIngredients, { toggle: addIngredient }] = useSet(new Set<number>([]));
-  const pizzaPrice = Number(
-    items.find((item) => item.pizzaType === type && item.size === size)?.price
-  );
-  const totalIngredientsPrice = ingredients
-    .filter((ing) => selectedIngredients.has(ing.id))
-    .reduce((sum, ing) => sum + Number(ing.price), 0);
 
-  const totalPrice = pizzaPrice + totalIngredientsPrice;
+  const totalPrice = calcTotalPizzaPrice(items, ingredients, size, type, selectedIngredients);
 
   const textDetails = `${size} см,  ${mapPizzaTypes[type]} тесто, ингредиенты`;
 
