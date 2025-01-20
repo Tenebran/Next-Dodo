@@ -3,16 +3,10 @@ import React from 'react';
 import { PizzaImage } from './pizza-image';
 import { GroupVariants, IngredientItem, Title } from '.';
 import { Button } from '../ui';
-import {
-  mapPizzaTypes,
-  PizzaSizes,
-  pizzaSizes,
-  pizzaTypes,
-  PizzaTypes,
-} from '@/shared/constans/pizza';
+import { mapPizzaTypes, PizzaSizes, pizzaTypes, PizzaTypes } from '@/shared/constans/pizza';
 import { Ingredient, ProductItem } from '@prisma/client';
 import { useSet } from 'react-use';
-import { calcTotalPizzaPrice } from '@/shared/lib/calc-total-pizza-price';
+import { calcTotalPizzaPrice, getAvailable } from '@/shared/lib';
 
 interface Props {
   imageUrl: string;
@@ -39,18 +33,13 @@ const ChoosePizzaForm: React.FC<Props> = ({
 
   const totalPrice = calcTotalPizzaPrice(items, ingredients, size, type, selectedIngredients);
 
-  const textDetails = `${size} см,  ${mapPizzaTypes[type]} тесто, ингредиенты`;
+  const textDetails = `${size} см,  ${mapPizzaTypes[type]} тесто`;
 
   const handlerClickAddCart = () => {
     onClickAddCart?.();
   };
 
-  const availablePizzasByType = items.filter((item) => item.pizzaType === type);
-  const availablePizzas = pizzaSizes.map((item) => ({
-    name: item.name,
-    value: item.value,
-    disabled: !availablePizzasByType.some((pizza) => Number(pizza.size) === Number(item.value)),
-  }));
+  const availablePizzas = getAvailable(items, type);
 
   React.useEffect(() => {
     const currentSize = availablePizzas.find(
