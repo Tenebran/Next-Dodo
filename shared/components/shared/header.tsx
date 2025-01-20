@@ -2,7 +2,7 @@ import { cn } from '@/shared/lib/utils';
 import React from 'react';
 import Image from 'next/image';
 import { Button } from '../ui';
-import { Container, SeachInput } from '.';
+import { CartButton, Container, SeachInput } from '.';
 import { ArrowRight, ShoppingCart, User } from 'lucide-react';
 import Link from 'next/link';
 
@@ -32,18 +32,7 @@ export const Header: React.FC<PropsType> = ({ className }) => {
             Log in
           </Button>
           <div>
-            <Button className="group relative">
-              <b>5.20 $</b>
-              <span className="h-full w-[1px] bg-white/30 mx-3" />
-              <div className="flex items-center gap-1 transition duration-300 group-hover:opacity-0">
-                <ShoppingCart className="h-4 w-4 relativet" strokeWidth={2} />
-                <b>3</b>
-              </div>
-              <ArrowRight
-                size={20}
-                className="absolute right-5 transition duration-300 -translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0"
-              />
-            </Button>
+            <CartButton />
           </div>
         </div>
       </Container>
