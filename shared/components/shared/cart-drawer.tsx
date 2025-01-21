@@ -3,7 +3,6 @@
 import React from 'react';
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetFooter,
   SheetHeader,
@@ -26,12 +25,19 @@ const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ className, child
   const totalAmount = useCartStore((state) => state.totalAmount);
   const fetchCartItems = useCartStore((state) => state.fetchCartItems);
   const items = useCartStore((state) => state.items);
+  const updateItemQuantity = useCartStore((state) => state.updateItemQuantity);
 
   console.log('items', items);
 
   React.useEffect(() => {
     fetchCartItems();
   }, [fetchCartItems]);
+
+  const onCklickCountButton = (id: number, quantity: number, type: 'plus' | 'minus') => {
+    const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1;
+
+    updateItemQuantity(id, newQuantity);
+  };
 
   return (
     <Sheet>
@@ -61,6 +67,7 @@ const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ className, child
                 }
                 quantity={item.quantity}
                 id={item.id}
+                onClickCountButton={(type) => onCklickCountButton(item.id, item.quantity, type)}
               />
             </div>
           ))}
