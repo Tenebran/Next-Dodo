@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Button } from '../ui';
 import { CartButton, Container, SeachInput } from '.';
-import { ArrowRight, ShoppingCart, User } from 'lucide-react';
+import { User } from 'lucide-react';
 import Link from 'next/link';
 
 interface PropsType {
