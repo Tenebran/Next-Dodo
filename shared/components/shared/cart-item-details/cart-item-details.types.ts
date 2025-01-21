@@ -2,7 +2,7 @@ export interface CartItemProps {
   imageUrl: string;
   name: string;
   price: number;
-  details: string[];
+  details: string;
   quantity: number;
   id: number;
 }
