@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { Api } from '../services/api.client';
 import { getCartDetails } from '../lib';
 
-export type ICartItem = {
+export type CartStateItem = {
   id: number;
   quantity: number;
   name: string;
@@ -17,7 +17,7 @@ export interface CartState {
   loading: boolean;
   error: boolean;
   totalAmount: number;
-  items: ICartItem[];
+  items: CartStateItem[];
 
   fetchCartItems: () => Promise<void>;
   updateItemQuantity: (id: number, quantity: number) => Promise<void>;
