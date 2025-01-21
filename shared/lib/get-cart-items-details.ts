@@ -5,7 +5,7 @@ export const getCartItemsDetails = (
   pizzaType: PizzaTypes,
   pizzaSize: PizzaSizes,
   ingredients: Ingredient[]
-) => {
+): string => {
   const details = [];
 
   if (pizzaSize && pizzaType) {
