@@ -1,4 +1,5 @@
 import { prisma } from '@/prisma/prisma-client';
+import { updateCartTotalAmount } from '@/shared/lib/update-cart-total-amount';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
@@ -22,10 +23,19 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
     if (!cartItem) {
       return NextResponse.json({ error: 'Cart item not found' }, { status: 404 });
     }
+    await prisma.cartItem.update({
+      where: {
+        id,
+      },
+      data: {
+        quantity: data.quantity,
+      },
+    });
 
-    return NextResponse.json(cartItem);
+    const updatedUserCart = await updateCartTotalAmount(token);
+
+    return NextResponse.json(updatedUserCart);
   } catch (e) {
-    console.log('Something went wrong', e);
-    return NextResponse.json({ error: 'Something went wrong' }, { status: 500 });
+    return NextResponse.json({ error: 'Something went wrong ', e });
   }
 }
