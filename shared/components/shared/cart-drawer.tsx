@@ -1,4 +1,5 @@
-import { cn } from '@/shared/lib/utils';
+'use client';
+
 import React from 'react';
 import {
   Sheet,
@@ -12,6 +13,8 @@ import {
 import Link from 'next/link';
 import { Button } from '../ui';
 import { ArrowRight } from 'lucide-react';
+import { CartDriverItem } from './cart-driver-item';
+import { getCartItemsDetails } from '@/shared/lib';
 
 interface Props {
   className?: string;
@@ -27,6 +30,89 @@ const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ className, child
             В Корзине <span className="font-bold">3 товара</span>
           </SheetTitle>
         </SheetHeader>
+
+        <div className="-mx-6 mt-5 overflow-auto flex-1 scrollbar">
+          <div className="mb-2 ">
+            <CartDriverItem
+              imageUrl={
+                'https://media.dodostatic.net/image/r:584x584/11EE7D61706D472F9A5D71EB94149304.webp'
+              }
+              name={'Чоризо Фреш'}
+              price={120}
+              details={getCartItemsDetails(2, 30, [
+                {
+                  name: 'Сыр',
+                  id: 0,
+                  price: '',
+                  imageUrl: '',
+                  createdAt: new Date(),
+                  updatedAt: new Date(),
+                  cartItemId: null,
+                },
+                {
+                  name: 'Моцарелла',
+                  id: 0,
+                  price: '',
+                  imageUrl: '',
+                  createdAt: new Date(),
+                  updatedAt: new Date(),
+                  cartItemId: null,
+                },
+                {
+                  name: 'Помидоры',
+                  id: 0,
+                  price: '',
+                  imageUrl: '',
+                  createdAt: new Date(),
+                  updatedAt: new Date(),
+                  cartItemId: null,
+                },
+              ])}
+              quantity={1}
+              id={0}
+            />
+          </div>
+          <div className="mb-2 ">
+            <CartDriverItem
+              imageUrl={
+                'https://media.dodostatic.net/image/r:584x584/11EE7D61706D472F9A5D71EB94149304.webp'
+              }
+              name={'Чоризо Фреш'}
+              price={120}
+              details={getCartItemsDetails(2, 30, [
+                {
+                  name: 'Сыр',
+                  id: 0,
+                  price: '',
+                  imageUrl: '',
+                  createdAt: new Date(),
+                  updatedAt: new Date(),
+                  cartItemId: null,
+                },
+                {
+                  name: 'Моцарелла',
+                  id: 0,
+                  price: '',
+                  imageUrl: '',
+                  createdAt: new Date(),
+                  updatedAt: new Date(),
+                  cartItemId: null,
+                },
+                {
+                  name: 'Помидоры',
+                  id: 0,
+                  price: '',
+                  imageUrl: '',
+                  createdAt: new Date(),
+                  updatedAt: new Date(),
+                  cartItemId: null,
+                },
+              ])}
+              quantity={1}
+              id={0}
+            />
+          </div>
+        </div>
 
         <SheetFooter className="-mx-6 bg-white p-8">
           <div className="w-full">
