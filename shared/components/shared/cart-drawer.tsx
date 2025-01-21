@@ -27,6 +27,8 @@ const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ className, child
   const fetchCartItems = useCartStore((state) => state.fetchCartItems);
   const items = useCartStore((state) => state.items);
 
+  console.log('items', items);
+
   React.useEffect(() => {
     fetchCartItems();
   }, [fetchCartItems]);
@@ -37,7 +39,7 @@ const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ className, child
       <SheetContent className="flex flex-col justify-between pb-0 bg-[#F4F1EE]">
         <SheetHeader>
           <SheetTitle>
-            В Корзине <span className="font-bold">3 товара</span>
+            В Корзине <span className="font-bold">{items.length} товара</span>
           </SheetTitle>
         </SheetHeader>
 
