@@ -14,5 +14,4 @@ export interface CartDTO extends Cart {
 export interface CreateCartItemValues {
   productItemId: number;
   ingredientsIds?: number[];
-  quantity: number;
 }

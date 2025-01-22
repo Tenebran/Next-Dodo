@@ -135,12 +135,12 @@ async function up() {
     data: [
       {
         userId: 1,
-        totalAmount: 0,
+        totalAmount: "0",
         token: '11111',
       },
       {
         userId: 2,
-        totalAmount: 0,
+        totalAmount: "0",
         token: '222222',
       },
     ],

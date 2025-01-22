@@ -8,6 +8,7 @@ import { ChoosePizzaForm, ChooseProductForm } from '..';
 import { ProductWithRelations } from '@/@types/prisma';
 import { Dialog, DialogContent } from '../../ui';
 import { DialogDescription, DialogTitle } from '../../ui/dialog';
+import { useCartStore } from '@/shared/store';
 
 interface Props {
   className?: string;
@@ -16,9 +17,33 @@ interface Props {
 
 const ChooseProductModal: React.FC<Props> = ({ className, product }) => {
   const router = useRouter();
-
-  console.log('product.ingredients', product.ingredients);
   const isPizzaForm = !!product.items[0].pizzaType;
+  const addCartItem = useCartStore((state) => state.addCartItem);
+  const firstItem = product.items[0];
+
+  const onAddProduct = () => {
+    addCartItem({
+      productItemId: firstItem.id,
+    });
+  };
+  const onAddPizza = async (productItemId: number, ingredientsIds: number[]) => {
+    try {
+      addCartItem({
+        productItemId,
+        ingredientsIds,
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const onSubmit = () => {
+    if (isPizzaForm) {
+      onAddPizza(firstItem.id, []);
+    } else {
+      onAddProduct();
+    }
+  };
 
   return (
     <Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
@@ -37,13 +62,14 @@ const ChooseProductModal: React.FC<Props> = ({ className, product }) => {
             imageUrl={product.imageUrl}
             ingredients={product.ingredients}
             items={product.items}
-            onClickAddCart={() => {}}
+            onSubmit={onAddPizza}
           />
         ) : (
           <ChooseProductForm
             name={product.name}
             imageUrl={product.imageUrl}
-            onClickAdd={() => {}}
+            onSabmit={onAddProduct}
+            price={Number(firstItem.price)}
           />
         )}
       </DialogContent>

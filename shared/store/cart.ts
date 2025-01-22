@@ -1,6 +1,8 @@
 import { create } from 'zustand';
 import { Api } from '../services/api.client';
 import { getCartDetails } from '../lib';
+import { CreateCartItemValues } from '../services/dto/cart.dto';
+import { Exo_2 } from 'next/font/google';
 
 export type CartStateItem = {
   id: number;
@@ -67,5 +69,17 @@ export const useCartStore = create<CartState>()((set, get) => ({
       set({ loading: false });
     }
   },
-  addCartItem: async (values: any) => {},
+  addCartItem: async (values: CreateCartItemValues) => {
+    try {
+      set({ loading: true, error: false });
+      console.log('values', values);
+      const data = await Api.cart.addCartItem(values);
+      set(getCartDetails(data));
+    } catch (error) {
+      console.error(error);
+      set({ error: true });
+    } finally {
+      set({ loading: false });
+    }
+  },
 }));

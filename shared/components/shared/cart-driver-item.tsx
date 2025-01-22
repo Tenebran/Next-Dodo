@@ -22,6 +22,8 @@ const CartDriverItem: React.FC<Props> = ({
   onClickCountButton,
   onClickRemove,
 }) => {
+  console.log('details', details);
+
   return (
     <div className={cn('flex bg-white p-5 gap-6', className)}>
       <CartItem.Image src={imageUrl} />
