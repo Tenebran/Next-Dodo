@@ -4,7 +4,7 @@ import { Container, GroupVariants, PizzaImage, Title } from '@/shared/components
 
 export const dynamicParams = true;
 
-export default async function ProductPage({ params }: { params: { id: string } }) {
+export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
   const product = await prisma.product.findUnique({
@@ -27,7 +27,7 @@ export default async function ProductPage({ params }: { params: { id: string } }
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, accusantium.
           </p>
           <GroupVariants
-            selectedValue="2"
+            value="2"
             items={[
               { name: 'Маленькая', value: '1' },
               { name: 'Средняя ', value: '2' },

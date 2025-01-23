@@ -2,7 +2,7 @@ import { prisma } from '@/prisma/prisma-client';
 import { updateCartTotalAmount } from '@/shared/lib/update-cart-total-amount';
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const id = await (await params).id;
     const numericId = Number(id);
@@ -42,7 +42,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
   }
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(req: NextRequest, { params }: { params: Promise<{ id: string }>  }) {
   try {
     const id = await (await params).id;
     const numericId = Number(id);

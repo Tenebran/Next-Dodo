@@ -33,6 +33,6 @@ export const getCartDetails = (data: CartDTO): RetunType => {
   }));
   return {
     items,
-    totalAmount: data.totalAmount,
+    totalAmount: Number(data.totalAmount),
   };
 };

@@ -55,7 +55,7 @@ const Filters: React.FC<Props> = ({ className }) => {
         />
       </div>
       <div className="mt-5 border-y border-y-neutral-100 py-6 pb-7">
-        <div className="flex gap-3 mb-5">
+        {/* <div className="flex gap-3 mb-5">
           <Input
             type="number"
             placeholder="0"
@@ -73,7 +73,7 @@ const Filters: React.FC<Props> = ({ className }) => {
             value={String(filters.prices.priceTo)}
             onChange={(e) => filters.updatePrice('priceTo', e.target.valueAsNumber || 0)}
           />
-        </div>
+        </div> */}
         <RangeSlider
           min={0}
           max={1000}

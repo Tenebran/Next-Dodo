@@ -1,5 +1,6 @@
 import { prisma } from '@/prisma/prisma-client';
 import { Container, Filters, ProductsGroupList, Title, TopBar } from '@/shared/components/shared';
+import { Suspense } from 'react';
 
 export default async function Home() {
   // await prisma.$executeRawUnsafe('DISCARD PLANS');
@@ -26,7 +27,9 @@ export default async function Home() {
       <Container className="pb-14 mt-10">
         <div className="flex gap-[80px]">
           <div className="w-[250px]">
-            <Filters />
+            <Suspense>
+              <Filters />
+            </Suspense>
           </div>
           <div className="flex-1">
             <div className="flex flex-col gap-16">
