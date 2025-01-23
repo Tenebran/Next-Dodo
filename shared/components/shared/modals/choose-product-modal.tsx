@@ -24,29 +24,18 @@ const ChooseProductModal: React.FC<Props> = ({ className, product }) => {
 
   const firstItem = product.items[0];
 
-  const onAddProduct = () => {
-    addCartItem({
-      productItemId: firstItem.id,
-    });
-  };
-  const onAddPizza = async (productItemId: number, ingredientsIds: number[]) => {
+  const onSubmit = async (productItemId?: number, ingredientsIds?: number[]) => {
     try {
-      addCartItem({
-        productItemId,
+      const itemId = productItemId ?? firstItem.id;
+      await addCartItem({
+        productItemId: itemId,
         ingredientsIds,
       });
-      toast.success('Пицца добавлена в корзину');
+      router.back();
+      toast.success(`${product.name} добавлена в корзину`);
     } catch (e) {
-      toast.error('Не удалось добавить пиццу в корзину');
+      toast.error(`Не удалось добавить ${product.name} в корзину`);
       console.error(e);
-    }
-  };
-
-  const onSubmit = () => {
-    if (isPizzaForm) {
-      onAddPizza(firstItem.id, []);
-    } else {
-      onAddProduct();
     }
   };
 
@@ -67,14 +56,14 @@ const ChooseProductModal: React.FC<Props> = ({ className, product }) => {
             imageUrl={product.imageUrl}
             ingredients={product.ingredients}
             items={product.items}
-            onSubmit={onAddPizza}
+            onSubmit={onSubmit}
             loading={loading}
           />
         ) : (
           <ChooseProductForm
             name={product.name}
             imageUrl={product.imageUrl}
-            onSabmit={onAddProduct}
+            onSabmit={() => onSubmit()}
             price={Number(firstItem.price)}
             loading={loading}
           />
