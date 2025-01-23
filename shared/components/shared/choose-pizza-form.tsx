@@ -18,6 +18,7 @@ interface Props {
   items: ProductItem[];
   onSubmit: (itemId: number, ingredients: number[]) => void;
   size?: 20 | 30 | 40;
+  loading: boolean;
 }
 
 const ChoosePizzaForm: React.FC<Props> = ({
@@ -27,6 +28,7 @@ const ChoosePizzaForm: React.FC<Props> = ({
   ingredients,
   items,
   onSubmit,
+  loading,
 }) => {
   const {
     size,
@@ -89,6 +91,7 @@ const ChoosePizzaForm: React.FC<Props> = ({
           </div>
         </div>
         <Button
+          loading={loading}
           onClick={handlerClickAddCart}
           className="h-[55px] px-10 text-base rounded-[18px] w-full mt-5">
           Добавить в корзину {String(totalPrice.toFixed(2))} $

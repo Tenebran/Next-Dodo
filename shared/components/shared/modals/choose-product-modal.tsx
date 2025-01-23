@@ -9,6 +9,7 @@ import { ProductWithRelations } from '@/@types/prisma';
 import { Dialog, DialogContent } from '../../ui';
 import { DialogDescription, DialogTitle } from '../../ui/dialog';
 import { useCartStore } from '@/shared/store';
+import toast from 'react-hot-toast';
 
 interface Props {
   className?: string;
@@ -19,6 +20,8 @@ const ChooseProductModal: React.FC<Props> = ({ className, product }) => {
   const router = useRouter();
   const isPizzaForm = !!product.items[0].pizzaType;
   const addCartItem = useCartStore((state) => state.addCartItem);
+  const loading = useCartStore((state) => state.loading);
+
   const firstItem = product.items[0];
 
   const onAddProduct = () => {
@@ -32,7 +35,9 @@ const ChooseProductModal: React.FC<Props> = ({ className, product }) => {
         productItemId,
         ingredientsIds,
       });
+      toast.success('Пицца добавлена в корзину');
     } catch (e) {
+      toast.error('Не удалось добавить пиццу в корзину');
       console.error(e);
     }
   };
@@ -63,6 +68,7 @@ const ChooseProductModal: React.FC<Props> = ({ className, product }) => {
             ingredients={product.ingredients}
             items={product.items}
             onSubmit={onAddPizza}
+            loading={loading}
           />
         ) : (
           <ChooseProductForm
@@ -70,6 +76,7 @@ const ChooseProductModal: React.FC<Props> = ({ className, product }) => {
             imageUrl={product.imageUrl}
             onSabmit={onAddProduct}
             price={Number(firstItem.price)}
+            loading={loading}
           />
         )}
       </DialogContent>

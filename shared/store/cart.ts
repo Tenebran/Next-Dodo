@@ -2,7 +2,6 @@ import { create } from 'zustand';
 import { Api } from '../services/api.client';
 import { getCartDetails } from '../lib';
 import { CreateCartItemValues } from '../services/dto/cart.dto';
-import { Exo_2 } from 'next/font/google';
 
 export type CartStateItem = {
   id: number;

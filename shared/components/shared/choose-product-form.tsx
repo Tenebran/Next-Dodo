@@ -9,9 +9,17 @@ interface Props {
   className?: string;
   price: number;
   onSabmit?: VoidFunction;
+  loading: boolean;
 }
 
-const ChooseProductForm: React.FC<Props> = ({ className, imageUrl, name, onSabmit, price }) => {
+const ChooseProductForm: React.FC<Props> = ({
+  className,
+  imageUrl,
+  name,
+  onSabmit,
+  price,
+  loading,
+}) => {
   return (
     <div className={cn('flex flex-1', className)}>
       <div className="flex items-center justify-center flex-1 relative w-full">
@@ -25,7 +33,10 @@ const ChooseProductForm: React.FC<Props> = ({ className, imageUrl, name, onSabmi
       <div className="w-[490px] bg-[#fbfafa] p-7">
         <Title text={name} size="md" className="font-extrabold mb-1" />
 
-        <Button onClick={onSabmit} className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
+        <Button
+          onClick={onSabmit}
+          loading={loading}
+          className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
           Добавить в корзину {price} $
         </Button>
       </div>
