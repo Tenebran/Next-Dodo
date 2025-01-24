@@ -21,7 +21,6 @@ const ChooseProductModal: React.FC<Props> = ({ className, product }) => {
   const isPizzaForm = !!product.items[0].pizzaType;
   const addCartItem = useCartStore((state) => state.addCartItem);
   const loading = useCartStore((state) => state.loading);
-
   const firstItem = product.items[0];
 
   const onSubmit = async (productItemId?: number, ingredientsIds?: number[]) => {
