@@ -19,8 +19,6 @@ export default async function ProductModalPage({ params }: PageProps) {
     },
   });
 
-  console.log('product', product);
-
   if (!product) {
     return notFound();
   }

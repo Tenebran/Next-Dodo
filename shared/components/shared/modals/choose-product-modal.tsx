@@ -6,10 +6,7 @@ import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { useRouter } from 'next/navigation';
 import { ProductForm } from '..';
 import { ProductWithRelations } from '@/@types/prisma';
-import { Dialog, DialogContent } from '../../ui';
-import { DialogDescription, DialogTitle } from '../../ui/dialog';
-import { useCartStore } from '@/shared/store';
-import toast from 'react-hot-toast';
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from '../../ui/dialog';
 
 interface Props {
   className?: string;

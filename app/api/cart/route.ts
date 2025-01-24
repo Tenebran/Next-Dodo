@@ -53,7 +53,6 @@ export async function POST(req: NextRequest) {
     const data = (await req.json()) as CreateCartItemValues;
     const ingredientsIds = data.ingredientsIds?.sort() || [];
 
-    // Ищем все возможные кандидаты
     const possibleItems = await prisma.cartItem.findMany({
       where: {
         cartId: userCart.id,
@@ -64,7 +63,6 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Функция сравнения массивов
     const arraysEqual = (a: number[], b: number[]) => {
       if (a.length !== b.length) return false;
       const sortedA = [...a].sort();
@@ -72,20 +70,17 @@ export async function POST(req: NextRequest) {
       return sortedA.every((val, i) => val === sortedB[i]);
     };
 
-    // Ищем точное совпадение ингредиентов
     const existingItem = possibleItems.find((item) => {
       const itemIngredients = item.ingredients.map((i) => i.id).sort();
       return arraysEqual(itemIngredients, ingredientsIds);
     });
 
     if (existingItem) {
-      // Обновляем существующий элемент
       await prisma.cartItem.update({
         where: { id: existingItem.id },
         data: { quantity: { increment: 1 } },
       });
     } else {
-      // Создаем новый элемент
       await prisma.cartItem.create({
         data: {
           cartId: userCart.id,
@@ -98,7 +93,6 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // Обновляем общую сумму
     const updatedCart = await updateCartTotalAmount(token);
 
     const response = NextResponse.json(updatedCart);
