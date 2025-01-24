@@ -16,7 +16,7 @@ export default function HomeLayout({
   return (
     <main className="min-h-screen">
       <Suspense>
-        <Header />
+        <Header hasSearch hasCart />
       </Suspense>
       {modal}
 
