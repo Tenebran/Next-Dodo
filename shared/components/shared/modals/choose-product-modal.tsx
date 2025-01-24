@@ -4,7 +4,7 @@ import { cn } from '@/shared/lib/utils';
 import React from 'react';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { useRouter } from 'next/navigation';
-import { ChoosePizzaForm, ChooseProductForm } from '..';
+import { ProductForm } from '..';
 import { ProductWithRelations } from '@/@types/prisma';
 import { Dialog, DialogContent } from '../../ui';
 import { DialogDescription, DialogTitle } from '../../ui/dialog';
@@ -18,25 +18,6 @@ interface Props {
 
 const ChooseProductModal: React.FC<Props> = ({ className, product }) => {
   const router = useRouter();
-  const isPizzaForm = !!product.items[0].pizzaType;
-  const addCartItem = useCartStore((state) => state.addCartItem);
-  const loading = useCartStore((state) => state.loading);
-  const firstItem = product.items[0];
-
-  const onSubmit = async (productItemId?: number, ingredientsIds?: number[]) => {
-    try {
-      const itemId = productItemId ?? firstItem.id;
-      await addCartItem({
-        productItemId: itemId,
-        ingredientsIds,
-      });
-      router.back();
-      toast.success(`${product.name} добавлена в корзину`);
-    } catch (e) {
-      toast.error(`Не удалось добавить ${product.name} в корзину`);
-      console.error(e);
-    }
-  };
 
   return (
     <Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
@@ -49,24 +30,7 @@ const ChooseProductModal: React.FC<Props> = ({ className, product }) => {
           <DialogTitle></DialogTitle>
           <DialogDescription></DialogDescription>
         </VisuallyHidden>
-        {isPizzaForm ? (
-          <ChoosePizzaForm
-            name={product.name}
-            imageUrl={product.imageUrl}
-            ingredients={product.ingredients}
-            items={product.items}
-            onSubmit={onSubmit}
-            loading={loading}
-          />
-        ) : (
-          <ChooseProductForm
-            name={product.name}
-            imageUrl={product.imageUrl}
-            onSabmit={() => onSubmit()}
-            price={Number(firstItem.price)}
-            loading={loading}
-          />
-        )}
+        <ProductForm product={product} />
       </DialogContent>
     </Dialog>
   );

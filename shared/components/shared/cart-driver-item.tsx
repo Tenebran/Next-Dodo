@@ -34,7 +34,7 @@ const CartDriverItem: React.FC<Props> = ({
         <div className="flex items-center justify-between">
           <CountButton onClick={onClickCountButton} value={quantity} />
           <div className="flex items-center gap-3">
-            <CartItem.Price value={price} />
+            <CartItem.Price value={price.toFixed(2)} />
             <Trash2Icon
               className="text-gray-400 cursor-pointer hover:text-gray-600"
               onClick={onClickRemove}
