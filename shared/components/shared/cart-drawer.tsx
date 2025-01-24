@@ -23,7 +23,6 @@ interface Props {
 
 const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ className, children }) => {
   const totalAmount = useCartStore((state) => state.totalAmount);
-  console.log('totalAmount', totalAmount);
   const fetchCartItems = useCartStore((state) => state.fetchCartItems);
   const items = useCartStore((state) => state.items);
   const updateItemQuantity = useCartStore((state) => state.updateItemQuantity);

@@ -12,7 +12,7 @@ const generateProductItem = ({
   productId: number;
   pizzaType?: 1 | 2;
   size?: 20 | 30 | 40;
-  price?: string;
+  price?: number;
 }) => {
   return {
     productId,
@@ -93,41 +93,41 @@ async function up() {
   await prisma.productItem.createMany({
     data: [
       // Пицца "Пепперони фреш"
-      generateProductItem({ productId: pizza1.id, pizzaType: 1, size: 20, price: '6.99' }),
-      generateProductItem({ productId: pizza1.id, pizzaType: 2, size: 30, price: '8.99' }),
-      generateProductItem({ productId: pizza1.id, pizzaType: 2, size: 40, price: '12.99' }),
+      generateProductItem({ productId: pizza1.id, pizzaType: 1, size: 20, price: 6.99 }),
+      generateProductItem({ productId: pizza1.id, pizzaType: 2, size: 30, price: 8.99 }),
+      generateProductItem({ productId: pizza1.id, pizzaType: 2, size: 40, price: 12.99 }),
 
       // Пицца "Сырная"
-      generateProductItem({ productId: pizza2.id, pizzaType: 1, size: 20, price: '5.99' }),
-      generateProductItem({ productId: pizza2.id, pizzaType: 1, size: 30, price: '7.99' }),
-      generateProductItem({ productId: pizza2.id, pizzaType: 1, size: 40, price: '11.99' }),
-      generateProductItem({ productId: pizza2.id, pizzaType: 2, size: 20, price: '6.99' }),
-      generateProductItem({ productId: pizza2.id, pizzaType: 2, size: 30, price: '8.99' }),
-      generateProductItem({ productId: pizza2.id, pizzaType: 2, size: 40, price: '12.99' }),
+      generateProductItem({ productId: pizza2.id, pizzaType: 1, size: 20, price: 5.99 }),
+      generateProductItem({ productId: pizza2.id, pizzaType: 1, size: 30, price: 7.99 }),
+      generateProductItem({ productId: pizza2.id, pizzaType: 1, size: 40, price: 11.99 }),
+      generateProductItem({ productId: pizza2.id, pizzaType: 2, size: 20, price: 6.99 }),
+      generateProductItem({ productId: pizza2.id, pizzaType: 2, size: 30, price: 8.99 }),
+      generateProductItem({ productId: pizza2.id, pizzaType: 2, size: 40, price: 12.99 }),
 
       // Пицца "Чоризо фреш"
-      generateProductItem({ productId: pizza3.id, pizzaType: 1, size: 20, price: '9.99' }),
-      generateProductItem({ productId: pizza3.id, pizzaType: 2, size: 30, price: '12.99' }),
-      generateProductItem({ productId: pizza3.id, pizzaType: 2, size: 40, price: '15.99' }),
+      generateProductItem({ productId: pizza3.id, pizzaType: 1, size: 20, price: 9.99 }),
+      generateProductItem({ productId: pizza3.id, pizzaType: 2, size: 30, price: 12.99 }),
+      generateProductItem({ productId: pizza3.id, pizzaType: 2, size: 40, price: 15.99 }),
 
       // Остальные продукты
-      generateProductItem({ productId: 1, price: '5.99' }),
-      generateProductItem({ productId: 2, price: '5.99' }),
-      generateProductItem({ productId: 3, price: '2.99' }),
-      generateProductItem({ productId: 4, price: '7.99' }),
-      generateProductItem({ productId: 5, price: '5.99' }),
-      generateProductItem({ productId: 6, price: '3.99' }),
-      generateProductItem({ productId: 7, price: '9.99' }),
-      generateProductItem({ productId: 8, price: '9.99' }),
-      generateProductItem({ productId: 9, price: '5.99' }),
-      generateProductItem({ productId: 10, price: '4.99' }),
-      generateProductItem({ productId: 11, price: '4.99' }),
-      generateProductItem({ productId: 12, price: '4.99' }),
-      generateProductItem({ productId: 13, price: '4.99' }),
-      generateProductItem({ productId: 14, price: '6.99' }),
-      generateProductItem({ productId: 15, price: '6.99' }),
-      generateProductItem({ productId: 16, price: '5.99' }),
-      generateProductItem({ productId: 17, price: '5.99' }),
+      generateProductItem({ productId: 1, price: 5.99 }),
+      generateProductItem({ productId: 2, price: 5.99 }),
+      generateProductItem({ productId: 3, price: 2.99 }),
+      generateProductItem({ productId: 4, price: 7.99 }),
+      generateProductItem({ productId: 5, price: 5.99 }),
+      generateProductItem({ productId: 6, price: 3.99 }),
+      generateProductItem({ productId: 7, price: 9.99 }),
+      generateProductItem({ productId: 8, price: 9.99 }),
+      generateProductItem({ productId: 9, price: 5.99 }),
+      generateProductItem({ productId: 10, price: 4.99 }),
+      generateProductItem({ productId: 11, price: 4.99 }),
+      generateProductItem({ productId: 12, price: 4.99 }),
+      generateProductItem({ productId: 13, price: 4.99 }),
+      generateProductItem({ productId: 14, price: 6.99 }),
+      generateProductItem({ productId: 15, price: 6.99 }),
+      generateProductItem({ productId: 16, price: 5.99 }),
+      generateProductItem({ productId: 17, price: 5.99 }),
     ],
   });
 
@@ -135,12 +135,12 @@ async function up() {
     data: [
       {
         userId: 1,
-        totalAmount: "0",
+        totalAmount: '0',
         token: '11111',
       },
       {
         userId: 2,
-        totalAmount: "0",
+        totalAmount: '0',
         token: '222222',
       },
     ],
