@@ -45,56 +45,67 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     let token = req.cookies.get('cartToken')?.value;
-
-    if (!token) {
-      token = crypto.randomUUID();
-    }
+    if (!token) token = crypto.randomUUID();
 
     const userCart = await findOrCreateCart(token);
+    if (!userCart) throw new Error('Cart not found');
 
     const data = (await req.json()) as CreateCartItemValues;
+    const ingredientsIds = data.ingredientsIds?.sort() || [];
 
-    const findCartItem = await prisma.cartItem.findFirst({
+    // Ищем все возможные кандидаты
+    const possibleItems = await prisma.cartItem.findMany({
       where: {
-        cartId: userCart?.id,
+        cartId: userCart.id,
         productItemId: data.productItemId,
-        ingredients: {
-          every: {
-            id: {
-              in: data.ingredientsIds,
-            },
-          },
-        },
+      },
+      include: {
+        ingredients: { select: { id: true } },
       },
     });
 
-    if (findCartItem) {
+    // Функция сравнения массивов
+    const arraysEqual = (a: number[], b: number[]) => {
+      if (a.length !== b.length) return false;
+      const sortedA = [...a].sort();
+      const sortedB = [...b].sort();
+      return sortedA.every((val, i) => val === sortedB[i]);
+    };
+
+    // Ищем точное совпадение ингредиентов
+    const existingItem = possibleItems.find((item) => {
+      const itemIngredients = item.ingredients.map((i) => i.id).sort();
+      return arraysEqual(itemIngredients, ingredientsIds);
+    });
+
+    if (existingItem) {
+      // Обновляем существующий элемент
       await prisma.cartItem.update({
-        where: {
-          id: findCartItem.id,
-        },
+        where: { id: existingItem.id },
+        data: { quantity: { increment: 1 } },
+      });
+    } else {
+      // Создаем новый элемент
+      await prisma.cartItem.create({
         data: {
-          quantity: findCartItem.quantity + 1,
+          cartId: userCart.id,
+          productItemId: data.productItemId,
+          quantity: 1,
+          ingredients: {
+            connect: ingredientsIds.map((id) => ({ id })),
+          },
         },
       });
     }
-    await prisma.cartItem.create({
-      data: {
-        cartId: userCart?.id,
-        productItemId: data.productItemId,
-        quantity: 1,
-        ingredients: {
-          connect: data.ingredientsIds?.map((id) => ({ id })),
-        },
-      },
-    });
-    const updatedUserCart = await updateCartTotalAmount(token);
-    const res = NextResponse.json(updatedUserCart);
-    res.cookies.set('cartToken', token);
 
-    return res;
+    // Обновляем общую сумму
+    const updatedCart = await updateCartTotalAmount(token);
+
+    const response = NextResponse.json(updatedCart);
+    response.cookies.set('cartToken', token);
+    return response;
   } catch (e) {
-    console.error('[CART_POST] Server error', e);
-    return NextResponse.json({ message: '[CART_POST] Server error' }, { status: 500 });
+    console.error('[CART_POST] Error:', e);
+    return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
   }
 }

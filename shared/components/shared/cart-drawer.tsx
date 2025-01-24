@@ -68,6 +68,7 @@ const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ children }) => {
                 }
                 quantity={item.quantity}
                 id={item.id}
+                disabled={item.disabled}
                 onClickCountButton={(type) => onCklickCountButton(item.id, item.quantity, type)}
                 onClickRemove={() => removeCartItem(item.id)}
               />

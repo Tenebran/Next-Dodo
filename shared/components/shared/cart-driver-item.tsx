@@ -18,14 +18,19 @@ const CartDriverItem: React.FC<Props> = ({
   price,
   details,
   quantity,
-  id,
+  disabled,
   onClickCountButton,
   onClickRemove,
 }) => {
   console.log('details', details);
 
   return (
-    <div className={cn('flex bg-white p-5 gap-6', className)}>
+    <div
+      className={cn(
+        'flex bg-white p-5 gap-6',
+        { 'opacity-50 pointer-events-none': disabled },
+        className
+      )}>
       <CartItem.Image src={imageUrl} />
 
       <div className="flex-1">
