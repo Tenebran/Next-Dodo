@@ -1,4 +1,10 @@
-import { CheckoutItemDetails, Container, Title, WhiteBlock } from '@/shared/components/shared';
+import {
+  CheckoutItem,
+  CheckoutItemDetails,
+  Container,
+  Title,
+  WhiteBlock,
+} from '@/shared/components/shared';
 import { Button, Input, Textarea } from '@/shared/components/ui';
 import { ArrowRight, Package, Percent, Truck } from 'lucide-react';
 export default function CheckoutPage() {
@@ -7,7 +13,26 @@ export default function CheckoutPage() {
       <Title text="Оформление Заказа" className="font-extrabold mb-8 text-[36px]" />
       <div className="flex gap-10">
         <div className="flex flex-col gap-10 flex-1 mb-20">
-          <WhiteBlock title="1. Корзина">12151 </WhiteBlock>
+          <WhiteBlock title="1. Корзина">
+            <div className="flex flex-col gap-5">
+              <CheckoutItem
+                imageUrl="https://media.dodostatic.net/image/r:233x233/11EE7D610CF7E265B7C72BE5AE757CA7.webp"
+                name={'Большая пицца'}
+                price={13}
+                details={'Большая пицца iз пепперони и ветчины и сыра'}
+                quantity={3}
+                id={0}
+              />
+              <CheckoutItem
+                imageUrl="https://media.dodostatic.net/image/r:233x233/11EE7D610CF7E265B7C72BE5AE757CA7.webp"
+                name={'Большая пицца'}
+                price={13}
+                details={'Большая пицца iз пепперони и ветчины и сыра'}
+                quantity={3}
+                id={0}
+              />
+            </div>
+          </WhiteBlock>
           <WhiteBlock title="2. Персональные данные">
             <div className="grid grid-cols-2 gap-5">
               <Input name="firstName" className="text-base" placeholder="Имя" />

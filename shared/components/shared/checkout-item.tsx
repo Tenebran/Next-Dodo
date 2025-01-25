@@ -14,7 +14,7 @@ interface Props extends CartItemProps {
   ingredients?: Ingredient[];
 }
 
-export const CartItem: React.FC<Props> = ({
+export const CheckoutItem: React.FC<Props> = ({
   name,
   price,
   imageUrl,
