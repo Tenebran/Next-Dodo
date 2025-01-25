@@ -33,8 +33,6 @@ const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ children }) => {
   const updateItemQuantity = useCartStore((state) => state.updateItemQuantity);
   const removeCartItem = useCartStore((state) => state.removeCartItem);
 
-  console.log('items', items);
-
   React.useEffect(() => {
     fetchCartItems();
   }, [fetchCartItems]);
