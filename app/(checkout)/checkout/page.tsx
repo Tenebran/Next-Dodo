@@ -1,3 +1,5 @@
+'use client';
+
 import {
   CheckoutItem,
   CheckoutItemDetails,
@@ -6,8 +8,13 @@ import {
   WhiteBlock,
 } from '@/shared/components/shared';
 import { Button, Input, Textarea } from '@/shared/components/ui';
+import { PizzaSizes, PizzaTypes } from '@/shared/constans/pizza';
+import { useCart } from '@/shared/hooks/use-cart';
+import { getCartItemsDetails } from '@/shared/lib';
 import { ArrowRight, Package, Percent, Truck } from 'lucide-react';
 export default function CheckoutPage() {
+  const { items, totalAmount, onCklickCountButton, removeCartItem } = useCart();
+
   return (
     <Container className="mt-10">
       <Title text="Оформление Заказа" className="font-extrabold mb-8 text-[36px]" />
@@ -15,22 +22,24 @@ export default function CheckoutPage() {
         <div className="flex flex-col gap-10 flex-1 mb-20">
           <WhiteBlock title="1. Корзина">
             <div className="flex flex-col gap-5">
-              <CheckoutItem
-                imageUrl="https://media.dodostatic.net/image/r:233x233/11EE7D610CF7E265B7C72BE5AE757CA7.webp"
-                name={'Большая пицца'}
-                price={13}
-                details={'Большая пицца iз пепперони и ветчины и сыра'}
-                quantity={3}
-                id={0}
-              />
-              <CheckoutItem
-                imageUrl="https://media.dodostatic.net/image/r:233x233/11EE7D610CF7E265B7C72BE5AE757CA7.webp"
-                name={'Большая пицца'}
-                price={13}
-                details={'Большая пицца iз пепперони и ветчины и сыра'}
-                quantity={3}
-                id={0}
-              />
+              {items.map((item) => (
+                <CheckoutItem
+                  key={item.id}
+                  disabled={item.disabled}
+                  imageUrl={item.imageUrl}
+                  name={item.name}
+                  price={item.price}
+                  details={getCartItemsDetails(
+                    item.pizzaType as PizzaTypes,
+                    item.pizzaSize as PizzaSizes,
+                    item.ingredients
+                  )}
+                  quantity={item.quantity}
+                  id={item.id}
+                  onClickCountButton={(type) => onCklickCountButton(item.id, item.quantity, type)}
+                  onClickRemove={() => removeCartItem(item.id)}
+                />
+              ))}
             </div>
           </WhiteBlock>
           <WhiteBlock title="2. Персональные данные">
@@ -52,7 +61,7 @@ export default function CheckoutPage() {
           <WhiteBlock className="p-6 sticky top-4">
             <div className="flex flex-col gap-1">
               <span className="text-xl">Итого:</span>
-              <span className="text-[34px] font-extrabold">3506 ₽</span>
+              <span className="text-[34px] font-extrabold">{totalAmount} $</span>
             </div>
             <CheckoutItemDetails
               title={

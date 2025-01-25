@@ -15,33 +15,20 @@ import { Button } from '../ui';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { CartDriverItem } from './cart-driver-item';
 import { getCartItemsDetails } from '@/shared/lib';
-import { useCartStore } from '@/shared/store';
 import { PizzaSizes, PizzaTypes } from '@/shared/constans/pizza';
 import Image from 'next/image';
 import { Title } from '.';
 import { cn } from '@/shared/lib/utils';
 import { DialogDescription, DialogTitle } from '@radix-ui/react-dialog';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import { useCart } from '@/shared/hooks/use-cart';
 interface Props {
   className?: string;
 }
 
 const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ children }) => {
-  const totalAmount = useCartStore((state) => state.totalAmount);
-  const fetchCartItems = useCartStore((state) => state.fetchCartItems);
-  const items = useCartStore((state) => state.items);
-  const updateItemQuantity = useCartStore((state) => state.updateItemQuantity);
-  const removeCartItem = useCartStore((state) => state.removeCartItem);
-
-  React.useEffect(() => {
-    fetchCartItems();
-  }, [fetchCartItems]);
-
-  const onCklickCountButton = (id: number, quantity: number, type: 'plus' | 'minus') => {
-    const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1;
-
-    updateItemQuantity(id, newQuantity);
-  };
+  const { items, totalAmount, onCklickCountButton, removeCartItem } = useCart();
+  const [redirecting, setRedirecting] = React.useState(false);
 
   return (
     <Sheet>
@@ -115,8 +102,12 @@ const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ children }) => {
                     </span>
                     <span className="font-bold text-lg">{totalAmount} $</span>
                   </div>
-                  <Link href="/cart">
-                    <Button type="submit" className="w-full h-12 text-base">
+                  <Link href="/checkout">
+                    <Button
+                      loading={redirecting}
+                      onClick={() => setRedirecting(true)}
+                      type="submit"
+                      className="w-full h-12 text-base">
                       Оформить заказ
                       <ArrowRight className="w-5 ml-2" />
                     </Button>
