@@ -2,16 +2,16 @@
 
 import {
   CheckoutItem,
-  CheckoutItemDetails,
+  CheckoutSeidbar,
   Container,
   Title,
   WhiteBlock,
 } from '@/shared/components/shared';
-import { Button, Input, Textarea } from '@/shared/components/ui';
+import { Input, Textarea } from '@/shared/components/ui';
 import { PizzaSizes, PizzaTypes } from '@/shared/constans/pizza';
 import { useCart } from '@/shared/hooks/use-cart';
 import { getCartItemsDetails } from '@/shared/lib';
-import { ArrowRight, Package, Percent, Truck } from 'lucide-react';
+
 export default function CheckoutPage() {
   const { items, totalAmount, onCklickCountButton, removeCartItem } = useCart();
 
@@ -58,44 +58,7 @@ export default function CheckoutPage() {
           </WhiteBlock>
         </div>
         <div className="w-[450px]">
-          <WhiteBlock className="p-6 sticky top-4">
-            <div className="flex flex-col gap-1">
-              <span className="text-xl">Итого:</span>
-              <span className="text-[34px] font-extrabold">{totalAmount} $</span>
-            </div>
-            <CheckoutItemDetails
-              title={
-                <div className="flex items-center">
-                  <Package size={18} className="mr-2 text-gray-300" />
-                  Стоимость товаров
-                </div>
-              }
-              value="3500 ₽"
-            />
-            <CheckoutItemDetails
-              title={
-                <div className="flex items-center">
-                  <Percent size={18} className="mr-2 text-gray-300" />
-                  Налоги
-                </div>
-              }
-              value="3500 ₽"
-            />
-            <CheckoutItemDetails
-              title={
-                <div className="flex items-center">
-                  <Truck size={18} className="mr-2 text-gray-300" />
-                  Доставка
-                </div>
-              }
-              value="3500 ₽"
-            />
-
-            <Button type="submit" className="w-full h-14 rounded-2xl mt-6 text-base font-bold">
-              Перейти к оплате
-              <ArrowRight className="w-5 ml-2" />
-            </Button>
-          </WhiteBlock>
+          <CheckoutSeidbar totalAmount={totalAmount} />
         </div>
       </div>
     </Container>

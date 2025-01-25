@@ -27,4 +27,5 @@ export { WhiteBlock } from './white-block';
 export { CheckoutItemDetails } from './checkout-item-details';
 export { CheckoutItem } from './checkout-item';
 export { CheckoutItemSkeleton } from './checkout-item-skeleton';
+export { CheckoutSeidbar } from './checkout-seidbar';
 export * from './modals';

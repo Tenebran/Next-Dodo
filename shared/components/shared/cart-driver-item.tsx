@@ -22,8 +22,6 @@ const CartDriverItem: React.FC<Props> = ({
   onClickCountButton,
   onClickRemove,
 }) => {
-  console.log('details', details);
-
   return (
     <div
       className={cn(
