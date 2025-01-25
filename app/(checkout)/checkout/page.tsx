@@ -1,5 +1,5 @@
 import { Container, Title, WhiteBlock } from '@/shared/components/shared';
-import { Input } from '@/shared/components/ui';
+import { Input, Textarea } from '@/shared/components/ui';
 export default function CheckoutPage() {
   return (
     <Container className="mt-10">
@@ -17,11 +17,27 @@ export default function CheckoutPage() {
           </WhiteBlock>
           <WhiteBlock title="3. Адресс доставки">
             <div className="flex flex-col gap-5">
-              <Input name="firstName" className="text-base" placeholder="Имя" />
+              <Input name="firstName" className="text-base" placeholder="Адресс" />
+              <Textarea rows={5} className="text-base" placeholder="Комментарий к заказу" />
             </div>
           </WhiteBlock>
         </div>
-        <div className="w-[450px]">5454545</div>
+        <div className="w-[450px]">
+          <WhiteBlock className="p-6 sticky top-4">
+            <div className="flex flex-col gap-1">
+              <span className="text-xl">Итого:</span>
+              <span className="text-[34px] font-extrabold">3506 ₽</span>
+            </div>
+
+            <div className="flex my-4">
+              <span className="flex flex-1 text-lg text-neutral-500">
+                Количество товаров:
+                <div className="flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-2" />
+              </span>
+              <span className="font-bold text-lg">3000 ₽</span>
+            </div>
+          </WhiteBlock>
+        </div>
       </div>
     </Container>
   );
