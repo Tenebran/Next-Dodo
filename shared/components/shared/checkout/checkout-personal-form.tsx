@@ -2,7 +2,6 @@ import { cn } from '@/shared/lib/utils';
 import React from 'react';
 import { WhiteBlock } from '..';
 import { FormInput } from '../form';
-import { Input } from '../../ui';
 
 interface Props {
   className?: string;
@@ -10,11 +9,11 @@ interface Props {
 
 const CheckoutPersonalForm: React.FC<Props> = ({ className }) => {
   return (
-    <WhiteBlock className={cn('', className)} title="2. Персональные данные">
+    <WhiteBlock className={cn('mb-10', className)} title="2. Персональные данные">
       <div className="grid grid-cols-2 gap-5">
-        <Input name="firstName" className="text-base" placeholder="Имя" />
-        <Input name="lastName" className="text-base" placeholder="Фамилия" />
-        <Input name="email" className="text-base" placeholder="E-Mail" type="email" />
+        <FormInput name="firstName" className="text-base" placeholder="Имя" />
+        <FormInput name="lastName" className="text-base" placeholder="Фамилия" />
+        <FormInput name="email" className="text-base" placeholder="E-Mail" type="email" />
         <FormInput name="phone" className="text-base" placeholder="Телефон" type="tel" />
       </div>
     </WhiteBlock>
