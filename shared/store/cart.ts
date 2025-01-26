@@ -34,6 +34,7 @@ export const useCartStore = create<CartState>()((set, get) => ({
   loading: false,
   totalAmount: 0,
   fetchCartItems: async () => {
+    set({ loading: true, error: false });
     try {
       set({ loading: true, error: false });
       const data = await Api.cart.getCart();

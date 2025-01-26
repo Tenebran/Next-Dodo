@@ -13,7 +13,7 @@ import {
 } from '@/shared/components/shared/checkout';
 
 export default function CheckoutPage() {
-  const { items, totalAmount, onCklickCountButton, removeCartItem } = useCart();
+  const { items, totalAmount, onCklickCountButton, removeCartItem, loading } = useCart();
 
   const form = useForm<TCheckoutFormValues>({
     resolver: zodResolver(checkoutFormSchema),
@@ -22,7 +22,7 @@ export default function CheckoutPage() {
       lastName: '',
       email: '',
       phone: '',
-      adress: '',
+      address: '',
       comment: '',
     },
   });
@@ -35,22 +35,22 @@ export default function CheckoutPage() {
     <Container className="mt-10">
       <Title text="Оформление Заказа" className="font-extrabold mb-8 text-[36px]" />
       <FormProvider {...form}>
-        <form onSubmit={form.handleSubmit(onSumbit)}>
-          <div className="flex gap-10">
-            <div className="flex flex-col gap-10 flex-1 mb-20">
-              <CheckoutCart
-                items={items}
-                onCklickCountButton={onCklickCountButton}
-                removeCartItem={removeCartItem}
-              />
-              <CheckoutPersonalForm />
-              <CheckoutAddressForm />
-            </div>
-            <div className="w-[450px]">
-              <CheckoutSeidbar totalAmount={totalAmount} />
-            </div>
+        <div className="flex gap-10">
+          <div className="flex flex-col gap-10 flex-1 mb-20">
+            <CheckoutCart
+              items={items}
+              onCklickCountButton={onCklickCountButton}
+              removeCartItem={removeCartItem}
+            />
+            <CheckoutPersonalForm className={loading ? 'opacity-40 pointer-events-none' : ''} />
+            <CheckoutAddressForm className={loading ? 'opacity-40 pointer-events-none' : ''} />
           </div>
-        </form>
+          <form onSubmit={form.handleSubmit(onSumbit)}>
+            <div className="w-[450px]">
+              <CheckoutSeidbar totalAmount={totalAmount} loading={loading} />
+            </div>
+          </form>
+        </div>
       </FormProvider>
     </Container>
   );

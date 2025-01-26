@@ -20,7 +20,7 @@ const CheckoutCart: React.FC<Props> = ({
   removeCartItem,
 }) => {
   return (
-    <WhiteBlock title="1. Корзина" className={cn('mb-10', className)}>
+    <WhiteBlock title="1. Корзина" className={cn('', className)}>
       <div className="flex flex-col gap-5">
         {items.map((item) => (
           <CheckoutItem

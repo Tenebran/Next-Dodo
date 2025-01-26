@@ -1,24 +1,29 @@
 import React from 'react';
 import { CheckoutItemDetails, WhiteBlock } from '.';
 import { ArrowRight, Package, Percent, Truck } from 'lucide-react';
-import { Button } from '../ui';
+import { Button, Skeleton } from '../ui';
 
 interface Props {
   totalAmount: number;
+  loading?: boolean;
 }
 
 const VAT = 15;
 const DELIVERY_PRICE = 5;
 
-const CheckoutSeidbar: React.FC<Props> = ({ totalAmount }) => {
+const CheckoutSeidbar: React.FC<Props> = ({ totalAmount, loading }) => {
   const vatPrice = (totalAmount * VAT) / 100;
-  const totalPrice = totalAmount + vatPrice + DELIVERY_PRICE;
+  const totalPrice = !totalAmount ? undefined : totalAmount + vatPrice + DELIVERY_PRICE;
 
   return (
     <WhiteBlock className="p-6 sticky top-4">
       <div className="flex flex-col gap-1">
         <span className="text-xl">Итого:</span>
-        <span className="text-[34px] font-extrabold">{totalPrice.toFixed(2)} $</span>
+        {loading || !totalPrice ? (
+          <Skeleton className=" h-11 w-48" />
+        ) : (
+          <span className="text-[34px] h-11 font-extrabold">{totalPrice?.toFixed(2)} $</span>
+        )}
       </div>
       <CheckoutItemDetails
         title={
@@ -27,7 +32,9 @@ const CheckoutSeidbar: React.FC<Props> = ({ totalAmount }) => {
             Стоимость корзины
           </div>
         }
-        value={`${totalAmount.toFixed(2)} $`}
+        value={
+          loading ? <Skeleton className=" h-6 w-16 rounded-[6px]" /> : `${totalAmount.toFixed(2)} $`
+        }
       />
       <CheckoutItemDetails
         title={
@@ -36,7 +43,9 @@ const CheckoutSeidbar: React.FC<Props> = ({ totalAmount }) => {
             Налоги
           </div>
         }
-        value={`${vatPrice.toFixed(2)} $`}
+        value={
+          loading ? <Skeleton className=" h-6 w-16 rounded-[6px]" /> : `${vatPrice.toFixed(2)} $`
+        }
       />
       <CheckoutItemDetails
         title={
@@ -45,7 +54,7 @@ const CheckoutSeidbar: React.FC<Props> = ({ totalAmount }) => {
             Доставка
           </div>
         }
-        value={`${DELIVERY_PRICE} $`}
+        value={loading ? <Skeleton className=" h-6 w-16 rounded-[6px]" /> : `${DELIVERY_PRICE} $`}
       />
 
       <Button type="submit" className="w-full h-14 rounded-2xl mt-6 text-base font-bold">
