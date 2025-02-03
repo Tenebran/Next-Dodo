@@ -15,9 +15,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Get
       <Container className=" mt-10">
         <Title text="All pizzas" size="lg" className="font-extrabold" />
       </Container>
-
       <TopBar items={filteredCategories} />
-
       <Container className="pb-14 mt-10">
         <div className="flex gap-[80px]">
           <div className="w-[250px]">

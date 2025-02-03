@@ -39,6 +39,7 @@ export default function CheckoutPage() {
           <div className="flex flex-col gap-10 flex-1 mb-20">
             <CheckoutCart
               items={items}
+              loading={loading}
               onCklickCountButton={onCklickCountButton}
               removeCartItem={removeCartItem}
             />

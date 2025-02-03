@@ -19,10 +19,10 @@ const CheckoutSeidbar: React.FC<Props> = ({ totalAmount, loading }) => {
     <WhiteBlock className="p-6 sticky top-4">
       <div className="flex flex-col gap-1">
         <span className="text-xl">Итого:</span>
-        {loading || !totalPrice ? (
+        {loading ? (
           <Skeleton className=" h-11 w-48" />
         ) : (
-          <span className="text-[34px] h-11 font-extrabold">{totalPrice?.toFixed(2)} $</span>
+          <span className="text-[34px] h-11 font-extrabold">{totalPrice?.toFixed(2) ?? 0} $</span>
         )}
       </div>
       <CheckoutItemDetails
