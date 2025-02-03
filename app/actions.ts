@@ -3,23 +3,74 @@
 import { prisma } from '@/prisma/prisma-client';
 import { TCheckoutFormValues } from '@/shared/constans/checkout-form-schema';
 import { OrderStatus } from '@prisma/client';
+import { cookies } from 'next/headers';
 
 export async function createOrder(data: TCheckoutFormValues) {
-  const token = '123';
+  try {
+    const cookiesStrore = cookies();
+    const cartToken = (await cookiesStrore).get('cartToken')?.value;
 
-  await prisma.order.create({
-    data: {
-      token,
-      fullName: data.firstName + ' ' + data.lastName,
-      totalAmount: 1500,
-      status: OrderStatus.PENDING,
-      items: [],
-      email: data.email,
-      phone: data.phone,
-      address: data.address,
-      comment: data.comment,
-    },
-  });
+    if (!cartToken) {
+      throw new Error('Cart token not found');
+    }
 
-  return 'https://nextjs.org/';
+    const userCart = await prisma.cart.findFirst({
+      include: {
+        user: true,
+        items: {
+          include: {
+            ingredients: true,
+            productItem: {
+              include: {
+                product: true,
+              },
+            },
+          },
+        },
+      },
+      where: {
+        token: cartToken,
+      },
+    });
+
+    if (!userCart?.totalAmount) {
+      throw new Error('Cart is empty');
+    }
+
+    if (!userCart) {
+      throw new Error('Cart not found');
+    }
+
+    const order = await prisma.order.create({
+      data: {
+        token: cartToken,
+        fullName: data.firstName + ' ' + data.lastName,
+        email: data.email,
+        phone: data.phone,
+        address: data.address,
+        comment: data.comment,
+        totalAmount: Number(userCart.totalAmount),
+        status: OrderStatus.PENDING,
+        items: JSON.stringify(userCart.items),
+      },
+    });
+
+    await prisma.cart.update({
+      where: {
+        token: cartToken,
+        id: userCart.id,
+      },
+      data: {
+        totalAmount: '0',
+      },
+    });
+
+    await prisma.cartItem.deleteMany({
+      where: {
+        cartId: userCart.id,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+  }
 }
