@@ -11,8 +11,12 @@ import {
   CheckoutPersonalForm,
   TCheckoutFormValues,
 } from '@/shared/components/shared/checkout';
+import { createOrder } from '@/app/actions';
+import toast from 'react-hot-toast';
+import React from 'react';
 
 export default function CheckoutPage() {
+  const [submitting, setSubmitting] = React.useState(false);
   const { items, totalAmount, onCklickCountButton, removeCartItem, loading } = useCart();
 
   const form = useForm<TCheckoutFormValues>({
@@ -27,8 +31,23 @@ export default function CheckoutPage() {
     },
   });
 
-  const onSumbit: SubmitHandler<TCheckoutFormValues> = (data) => {
-    console.log(data);
+  const onSumbit: SubmitHandler<TCheckoutFormValues> = async (data) => {
+    try {
+      setSubmitting(true);
+      const url = await createOrder(data);
+      toast.success('Заказ успешно оформлен! Переход на оплату....', {
+        icon: '🎉',
+      });
+
+      if (url !== undefined) {
+        location.href = url;
+      }
+    } catch {
+      toast.error('Не удалось создать заказ', {
+        icon: '🚫',
+      });
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -48,7 +67,7 @@ export default function CheckoutPage() {
           </div>
           <form onSubmit={form.handleSubmit(onSumbit)}>
             <div className="w-[450px]">
-              <CheckoutSeidbar totalAmount={totalAmount} loading={loading} />
+              <CheckoutSeidbar totalAmount={totalAmount} loading={loading || submitting} />
             </div>
           </form>
         </div>
