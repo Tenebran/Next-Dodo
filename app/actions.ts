@@ -1,7 +1,9 @@
 'use server';
 
 import { prisma } from '@/prisma/prisma-client';
+import { PayOrderTamplate } from '@/shared/components/shared';
 import { TCheckoutFormValues } from '@/shared/constans/checkout-form-schema';
+import { sendEmail } from '@/shared/lib';
 import { OrderStatus } from '@prisma/client';
 import { cookies } from 'next/headers';
 
@@ -70,7 +72,17 @@ export async function createOrder(data: TCheckoutFormValues) {
         cartId: userCart.id,
       },
     });
+
+    await sendEmail(
+      data.email,
+      `Next Dodo / Оплатите заказ #${order.id}`,
+      PayOrderTamplate({
+        orderId: order.id,
+        totalAmount: order.totalAmount,
+        paymentUrl: 'http://localhost:3000/api/cart/' + order.id,
+      })
+    );
   } catch (error) {
-    console.error(error);
+    console.error('createOrder server error', error);
   }
 }
