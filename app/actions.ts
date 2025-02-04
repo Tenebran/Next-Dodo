@@ -74,12 +74,12 @@ export async function createOrder(data: TCheckoutFormValues) {
     });
 
     await sendEmail(
-      data.email,
+      'sergejgarkusha94@gmail.com',
       `Next Dodo / Оплатите заказ #${order.id}`,
       PayOrderTamplate({
         orderId: order.id,
         totalAmount: order.totalAmount,
-        paymentUrl: 'http://localhost:3000/api/cart/' + order.id,
+        paymentUrl: 'https://resend.com/docs/send-with-nextjs',
       })
     );
   } catch (error) {

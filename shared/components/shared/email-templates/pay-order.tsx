@@ -14,7 +14,8 @@ export const PayOrderTamplate: React.FC<EmailTemplateProps> = ({
   <div>
     <h1>Заказ #${orderId}</h1>
     <p>
-      Оплатите заказ на сумму ${totalAmount} $. перейдите <a href={paymentUrl}>по этой ссылке</a>
+      Оплатите заказ на сумму <b>${totalAmount} $</b>. перейдите{' '}
+      <a href={paymentUrl}>по этой ссылке</a>
       для оплаты заказа.
     </p>
   </div>
