@@ -3,7 +3,7 @@
 import { prisma } from '@/prisma/prisma-client';
 import { PayOrderTamplate } from '@/shared/components/shared';
 import { TCheckoutFormValues } from '@/shared/constans/checkout-form-schema';
-import { sendEmail } from '@/shared/lib';
+import { createPayment, sendEmail } from '@/shared/lib';
 import { OrderStatus } from '@prisma/client';
 import { cookies } from 'next/headers';
 
@@ -73,15 +73,35 @@ export async function createOrder(data: TCheckoutFormValues) {
       },
     });
 
+    const paymentData = await createPayment({
+      orderId: order.id,
+      amount: order.totalAmount,
+      description: `Next Dodo / Оплата заказа #${order.id}`,
+    });
+
+    if (!paymentData) throw new Error('Payment data not found');
+
+    await prisma.order.update({
+      where: {
+        id: order.id,
+      },
+      data: {
+        paymentId: paymentData.id,
+      },
+    });
+
+    const paymentUrl = paymentData.confirmation.confirmation_url;
+
     await sendEmail(
       'sergejgarkusha94@gmail.com',
       `Next Dodo / Оплатите заказ #${order.id}`,
       PayOrderTamplate({
         orderId: order.id,
         totalAmount: order.totalAmount,
-        paymentUrl: 'https://resend.com/docs/send-with-nextjs',
+        paymentUrl: paymentUrl,
       })
     );
+    return paymentUrl;
   } catch (error) {
     console.error('createOrder server error', error);
   }
