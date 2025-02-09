@@ -3,7 +3,6 @@ import { prisma } from '@/prisma/prisma-client';
 import { OrderSuccessTamplate } from '@/shared/components/shared/email-templates/order-success';
 import { sendEmail } from '@/shared/lib';
 import { CartItemDTO } from '@/shared/services/dto/cart.dto';
-import { CartStateItem } from '@/shared/store';
 import { OrderStatus } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -21,22 +20,35 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Order not found' }, { status: 404 });
     }
 
+    const isSucceeded = body.object.status === 'succeeded';
+
     await prisma.order.update({
       where: { id: order.id },
       data: {
-        status: OrderStatus.SUCCEEDED,
+        status: isSucceeded ? OrderStatus.SUCCEEDED : OrderStatus.CANCELLED,
       },
     });
     const items = order?.items as unknown as CartItemDTO[];
 
-    await sendEmail(
-      'sergejgarkusha94@gmail.com',
-      `Next Dodo / Ваш заказ No${order.id} успешно оплачен!`,
-      OrderSuccessTamplate({
-        orderId: order.id,
-        items: items,
-      })
-    );
+    if (isSucceeded) {
+      await sendEmail(
+        'sergejgarkusha94@gmail.com',
+        `Next Dodo / Ваш заказ No${order.id} успешно оплачен!`,
+        OrderSuccessTamplate({
+          orderId: order.id,
+          items: items,
+        })
+      );
+    } else {
+      await sendEmail(
+        'sergejgarkusha94@gmail.com',
+        `Next Dodo / Ваш заказ No${order.id} отменен!`,
+        OrderSuccessTamplate({
+          orderId: order.id,
+          items: items,
+        })
+      );
+    }
 
     return NextResponse.json(body);
   } catch (e) {
