@@ -9,9 +9,7 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function POST(req: NextRequest) {
   console.log('Callback request received', req);
   try {
-    const data = await req.json();
     const body = (await req.json()) as PaymentCallbackData;
-    console.log('Callback request data', data);
     const order = await prisma.order.findUnique({
       where: { id: Number(body.object.metadata.order_id) },
     });
@@ -28,7 +26,7 @@ export async function POST(req: NextRequest) {
         status: isSucceeded ? OrderStatus.SUCCEEDED : OrderStatus.CANCELLED,
       },
     });
-    const items = order?.items as unknown as CartItemDTO[];
+    const items = JSON.parse(order?.items as string) as CartItemDTO[];
 
     if (isSucceeded) {
       await sendEmail(
