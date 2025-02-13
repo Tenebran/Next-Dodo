@@ -3,9 +3,7 @@
 import { cn } from '@/shared/lib/utils';
 import React, { useEffect } from 'react';
 import Image from 'next/image';
-import { Button } from '../ui';
-import { CartButton, Container, SeachInput } from '.';
-import { User } from 'lucide-react';
+import { CartButton, Container, ProfileButton, SeachInput } from '.';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import toast from 'react-hot-toast';
@@ -39,10 +37,11 @@ export const Header: React.FC<PropsType> = ({ className, hasSearch, hasCart }) =
         </Link>
         <div className="mx-10 flex-1">{hasSearch && <SeachInput />}</div>
         <div className="flex items-center gap-3">
-          <Button variant="outline" className="flex items-center gap-1">
-            <User size={16} />
-            Log in
-          </Button>
+          <ProfileButton
+            onCklickSingIn={function (): void {
+              throw new Error('Function not implemented.');
+            }}
+          />
           <div>{hasCart && <CartButton />}</div>
         </div>
       </Container>
