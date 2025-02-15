@@ -3,7 +3,7 @@
 import { cn } from '@/shared/lib/utils';
 import React, { useEffect } from 'react';
 import Image from 'next/image';
-import { CartButton, Container, ProfileButton, SeachInput } from '.';
+import { AuthModal, CartButton, Container, ProfileButton, SeachInput } from '.';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import toast from 'react-hot-toast';
@@ -15,6 +15,7 @@ interface PropsType {
 }
 
 export const Header: React.FC<PropsType> = ({ className, hasSearch, hasCart }) => {
+  const [openAuthModal, setOpenAuthModal] = React.useState(false);
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -37,11 +38,8 @@ export const Header: React.FC<PropsType> = ({ className, hasSearch, hasCart }) =
         </Link>
         <div className="mx-10 flex-1">{hasSearch && <SeachInput />}</div>
         <div className="flex items-center gap-3">
-          <ProfileButton
-            onCklickSingIn={function (): void {
-              throw new Error('Function not implemented.');
-            }}
-          />
+          <AuthModal open={openAuthModal} onClose={() => setOpenAuthModal(false)} />
+          <ProfileButton onCklickSingIn={() => setOpenAuthModal(true)} />
           <div>{hasCart && <CartButton />}</div>
         </div>
       </Container>
