@@ -3,7 +3,7 @@ import React from 'react';
 import { WhiteBlock } from '../white-block';
 import { CheckoutItem } from '../checkout-item';
 import { getCartItemsDetails } from '@/shared/lib';
-import { PizzaSizes, PizzaTypes } from '@/shared/constans/pizza';
+import { PizzaSizes, PizzaTypes } from '@/shared/constants/pizza';
 import { CartStateItem } from '@/shared/store';
 import { CheckoutItemSkeleton } from '../checkout-item-skeleton';
 

@@ -15,7 +15,7 @@ import { Button } from '../ui';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { CartDriverItem } from './cart-driver-item';
 import { getCartItemsDetails } from '@/shared/lib';
-import { PizzaSizes, PizzaTypes } from '@/shared/constans/pizza';
+import { PizzaSizes, PizzaTypes } from '@/shared/constants/pizza';
 import Image from 'next/image';
 import { Title } from '.';
 import { cn } from '@/shared/lib/utils';

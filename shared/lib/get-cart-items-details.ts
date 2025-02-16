@@ -1,4 +1,4 @@
-import { mapPizzaTypes, PizzaSizes, PizzaTypes } from '../constans/pizza';
+import { mapPizzaTypes, PizzaSizes, PizzaTypes } from '../constants/pizza';
 import { CartStateItem } from './get-cart-details';
 
 export const getCartItemsDetails = (

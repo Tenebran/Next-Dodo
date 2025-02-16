@@ -5,7 +5,7 @@ import React from 'react';
 import { PizzaImage } from './pizza-image';
 import { GroupVariants, IngredientItem, Title } from '.';
 import { Button } from '../ui';
-import { mapPizzaTypes, PizzaSizes, pizzaTypes, PizzaTypes } from '@/shared/constans/pizza';
+import { mapPizzaTypes, PizzaSizes, pizzaTypes, PizzaTypes } from '@/shared/constants/pizza';
 import { Ingredient, ProductItem } from '@prisma/client';
 import { usePizzaOptions } from '@/shared/hooks';
 import { getPizzaDetails } from '@/shared/lib/get-pizza-details';

@@ -2,7 +2,7 @@
 
 import { prisma } from '@/prisma/prisma-client';
 import { PayOrderTamplate } from '@/shared/components/shared';
-import { TCheckoutFormValues } from '@/shared/constans/checkout-form-schema';
+import { TCheckoutFormValues } from '@/shared/constants/checkout-form-schema';
 import { createPayment, sendEmail } from '@/shared/lib';
 import { OrderStatus } from '@prisma/client';
 import { cookies } from 'next/headers';

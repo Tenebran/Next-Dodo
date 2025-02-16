@@ -1,6 +1,6 @@
 import React from 'react';
 import { Variant } from '../components/shared/group-variants';
-import { PizzaSizes, PizzaTypes } from '../constans/pizza';
+import { PizzaSizes, PizzaTypes } from '../constants/pizza';
 import { useSet } from 'react-use';
 import { getAvailable } from '../lib';
 import { ProductItem } from '@prisma/client';

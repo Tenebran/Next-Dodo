@@ -1,6 +1,6 @@
 import { Ingredient, ProductItem } from '@prisma/client';
 import { calcTotalPizzaPrice } from './calc-total-pizza-price';
-import { PizzaSizes, PizzaTypes } from '../constans/pizza';
+import { PizzaSizes, PizzaTypes } from '../constants/pizza';
 
 /**
  * Calculate total price of a pizza, given its size, type, and selected ingredients
