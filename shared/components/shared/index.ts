@@ -34,3 +34,4 @@ export { ClearButton } from './clear-button';
 export * from './modals';
 export { PayOrderTamplate } from './email-templates/pay-order';
 export { ProfileButton } from './profile-button';
+export { InfoBlock } from './info-block';
