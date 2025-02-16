@@ -4,9 +4,10 @@ import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import toast from 'react-hot-toast';
-import { TFormRegisterValues, formRegisterSchema } from './schemas';
+import { TFormRegister, formRegisterSchema } from './schemas';
 import { FormInput } from '../../../form';
 import { Button } from '@/shared/components/ui';
+import { registerUser } from '@/app/api/auth/[...nextauth]/route';
 
 interface Props {
   onClose?: VoidFunction;
@@ -14,22 +15,21 @@ interface Props {
 }
 
 export const RegisterForm: React.FC<Props> = ({ onClose, onClickLogin }) => {
-  const form = useForm<TFormRegisterValues>({
+  const form = useForm<TFormRegister>({
     resolver: zodResolver(formRegisterSchema),
     defaultValues: {
       email: '',
-      fullName: '',
       password: '',
       confirmPassword: '',
     },
   });
 
-  const onSubmit = async (data: TFormRegisterValues) => {
+  const onSubmit = async (data: TFormRegister) => {
     try {
       await registerUser({
         email: data.email,
-        fullName: data.fullName,
         password: data.password,
+        fullName: data.firstName,
       });
 
       toast.error('Регистрация успешна 📝. Подтвердите свою почту', {
@@ -37,7 +37,7 @@ export const RegisterForm: React.FC<Props> = ({ onClose, onClickLogin }) => {
       });
 
       onClose?.();
-    } catch (error) {
+    } catch {
       return toast.error('Неверный E-Mail или пароль', {
         icon: '❌',
       });
