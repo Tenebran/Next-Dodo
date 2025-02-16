@@ -2,9 +2,9 @@ import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { formLoginSchema, TFormLogin } from './schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Title } from '..';
-import { FormInput } from './form-input';
-import { Button } from '../../ui';
+import { Title } from '../../..';
+import { FormInput } from '../../../form/form-input';
+import { Button } from '../../../../ui';
 import toast from 'react-hot-toast';
 import { signIn } from 'next-auth/react';
 
