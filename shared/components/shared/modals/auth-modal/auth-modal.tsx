@@ -49,7 +49,7 @@ const AuthModal: React.FC<Props> = ({ open, onClose }) => {
             <img
               alt="googleicon"
               className="w-6 h-6"
-              src="https://fonts.gstatic.com/s/i/productlogos/google_g/v6/24px.svg"
+              src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg"
             />
             Google
           </Button>
