@@ -2,6 +2,7 @@
 
 import { prisma } from '@/prisma/prisma-client';
 import { PayOrderTamplate } from '@/shared/components/shared';
+import { VerificationUserTemplate } from '@/shared/components/shared/email-templates/verification-user';
 import { TCheckoutFormValues } from '@/shared/constants/checkout-form-schema';
 import { createPayment, sendEmail } from '@/shared/lib';
 import { getUserSession } from '@/shared/lib/get-user-session';
@@ -165,6 +166,12 @@ export async function registerUser(body: Prisma.UserCreateInput) {
     await prisma.verificationCode.create({
       data: { code, userId: createdUser.id },
     });
+
+    await sendEmail(
+      createdUser.email,
+      `Next Dodo |  Подтвердите регистрацию`,
+      VerificationUserTemplate({ code })
+    );
   } catch (err) {
     console.log('Error [REGISTER_USER]', err);
     throw err;

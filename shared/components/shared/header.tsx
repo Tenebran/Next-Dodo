@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { AuthModal, CartButton, Container, ProfileButton, SeachInput } from '.';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import toast from 'react-hot-toast';
 
 interface PropsType {
@@ -17,10 +17,17 @@ interface PropsType {
 export const Header: React.FC<PropsType> = ({ className, hasSearch, hasCart }) => {
   const [openAuthModal, setOpenAuthModal] = React.useState(false);
   const searchParams = useSearchParams();
+  const router = useRouter();
 
   useEffect(() => {
     if (searchParams.has('paid')) {
       toast.success('Payment successful');
+      router.replace('/');
+    }
+
+    if (searchParams.has('verified')) {
+      toast.success('Почта успешно подтверждена!');
+      router.replace('/');
     }
   }, []);
 

@@ -14,7 +14,7 @@ interface Props {
   onClickLogin?: VoidFunction;
 }
 
-export const RegisterForm: React.FC<Props> = ({ onClose, onClickLogin }) => {
+export const RegisterForm: React.FC<Props> = ({ onClose }) => {
   const form = useForm<TFormRegister>({
     resolver: zodResolver(formRegisterSchema),
     defaultValues: {
@@ -46,7 +46,7 @@ export const RegisterForm: React.FC<Props> = ({ onClose, onClickLogin }) => {
 
   return (
     <FormProvider {...form}>
-      <form className="flex flex-col gap-5">
+      <form className="flex flex-col gap-5" onSubmit={form.handleSubmit(onSubmit)}>
         <FormInput name="email" label="E-Mail" required />
         <FormInput name="fullName" label="Полное имя" required />
         <FormInput name="password" label="Пароль" type="password" required />
