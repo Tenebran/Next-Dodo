@@ -36,3 +36,4 @@ export { PayOrderTamplate } from './email-templates/pay-order';
 export { ProfileButton } from './profile-button';
 export { InfoBlock } from './info-block';
 export { ProfileForm } from './profile-form';
+export { Stories } from './stories';
