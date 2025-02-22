@@ -196,3 +196,575 @@ export const products = [
     categoryId: 5,
   },
 ];
+
+export const story = [
+  {
+    id: 1,
+    previewImageUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/logo-350x440.webp',
+  },
+  {
+    id: 2,
+    previewImageUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/logo-350x440%20(1).webp',
+  },
+  {
+    id: 3,
+    previewImageUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/logo-350x440%20(2).webp',
+  },
+  {
+    id: 4,
+    previewImageUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/logo-350x440%20(3).webp',
+  },
+  {
+    id: 5,
+    previewImageUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/logo-350x440%20(4).webp',
+  },
+  {
+    id: 6,
+    previewImageUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/logo-350x440%20(5).webp',
+  },
+  {
+    id: 7,
+    previewImageUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/logo-350x440%20(6).webp',
+  },
+];
+
+export const storyItems = [
+  {
+    storyId: 1,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/vnpihltk3ukzqqi0kqld6ohy9x.webp',
+  },
+  {
+    storyId: 1,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/ha0ovg6fmnw7njynwofdvi8vie.webp',
+  },
+  {
+    storyId: 1,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/7cntgzxj3c9psbhaes9qmu7aju.webp',
+  },
+  {
+    storyId: 1,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/ziyvh6usjceif0nywr2zeekwtm.webp',
+  },
+  {
+    storyId: 1,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/unwbrdpqdjbdn2usnf0btgguuw.webp',
+  },
+  {
+    storyId: 1,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/zqyjo1qykk9sqzqfnivdyk3ydf%20(1).webp',
+  },
+  {
+    storyId: 1,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/iik8321mmmnddps4rotpp2b1jv.webp',
+  },
+  {
+    storyId: 1,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/4hdbizxevla8igqrnojhtgg4jq.webp',
+  },
+  {
+    storyId: 1,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/4ryyivaq9xijgtwa8bdge15kjy.webp',
+  },
+  {
+    storyId: 1,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/ewbpuriki3uvwmyxdn15lhsbzi.webp',
+  },
+  {
+    storyId: 1,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/0ovrnu8bsy3bymvjjltw20d8pe.webp',
+  },
+  {
+    storyId: 1,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/8upg6snerjzzphyvqhevdsspkm.webp',
+  },
+  {
+    storyId: 1,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/g3bb3hbarfwqly0igzaaf4c2fr.webp',
+  },
+  {
+    storyId: 1,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/revyccsmyfddhl99duu9qeeug4.webp',
+  },
+  {
+    storyId: 1,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/rjbslgir1uwfunvao4ocg7ijxv.webp',
+  },
+
+  {
+    storyId: 2,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/ha0ovg6fmnw7njynwofdvi8vie.webp',
+  },
+  {
+    storyId: 2,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/7cntgzxj3c9psbhaes9qmu7aju.webp',
+  },
+  {
+    storyId: 2,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/ziyvh6usjceif0nywr2zeekwtm.webp',
+  },
+  {
+    storyId: 2,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/unwbrdpqdjbdn2usnf0btgguuw.webp',
+  },
+  {
+    storyId: 2,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/zqyjo1qykk9sqzqfnivdyk3ydf%20(1).webp',
+  },
+  {
+    storyId: 2,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/iik8321mmmnddps4rotpp2b1jv.webp',
+  },
+  {
+    storyId: 2,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/4hdbizxevla8igqrnojhtgg4jq.webp',
+  },
+  {
+    storyId: 2,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/4ryyivaq9xijgtwa8bdge15kjy.webp',
+  },
+  {
+    storyId: 2,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/ewbpuriki3uvwmyxdn15lhsbzi.webp',
+  },
+  {
+    storyId: 2,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/0ovrnu8bsy3bymvjjltw20d8pe.webp',
+  },
+  {
+    storyId: 2,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/8upg6snerjzzphyvqhevdsspkm.webp',
+  },
+  {
+    storyId: 2,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/g3bb3hbarfwqly0igzaaf4c2fr.webp',
+  },
+  {
+    storyId: 2,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/revyccsmyfddhl99duu9qeeug4.webp',
+  },
+  {
+    storyId: 2,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/rjbslgir1uwfunvao4ocg7ijxv.webp',
+  },
+  {
+    storyId: 2,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/vnpihltk3ukzqqi0kqld6ohy9x.webp',
+  },
+
+  {
+    storyId: 3,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/7cntgzxj3c9psbhaes9qmu7aju.webp',
+  },
+  {
+    storyId: 3,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/ziyvh6usjceif0nywr2zeekwtm.webp',
+  },
+  {
+    storyId: 3,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/unwbrdpqdjbdn2usnf0btgguuw.webp',
+  },
+  {
+    storyId: 3,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/zqyjo1qykk9sqzqfnivdyk3ydf%20(1).webp',
+  },
+  {
+    storyId: 3,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/iik8321mmmnddps4rotpp2b1jv.webp',
+  },
+  {
+    storyId: 3,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/4hdbizxevla8igqrnojhtgg4jq.webp',
+  },
+  {
+    storyId: 3,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/4ryyivaq9xijgtwa8bdge15kjy.webp',
+  },
+  {
+    storyId: 3,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/ewbpuriki3uvwmyxdn15lhsbzi.webp',
+  },
+  {
+    storyId: 3,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/0ovrnu8bsy3bymvjjltw20d8pe.webp',
+  },
+  {
+    storyId: 3,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/8upg6snerjzzphyvqhevdsspkm.webp',
+  },
+  {
+    storyId: 3,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/g3bb3hbarfwqly0igzaaf4c2fr.webp',
+  },
+  {
+    storyId: 3,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/revyccsmyfddhl99duu9qeeug4.webp',
+  },
+  {
+    storyId: 3,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/rjbslgir1uwfunvao4ocg7ijxv.webp',
+  },
+  {
+    storyId: 3,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/vnpihltk3ukzqqi0kqld6ohy9x.webp',
+  },
+  {
+    storyId: 3,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/ha0ovg6fmnw7njynwofdvi8vie.webp',
+  },
+
+  {
+    storyId: 4,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/4hdbizxevla8igqrnojhtgg4jq.webp',
+  },
+  {
+    storyId: 4,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/4ryyivaq9xijgtwa8bdge15kjy.webp',
+  },
+  {
+    storyId: 4,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/ewbpuriki3uvwmyxdn15lhsbzi.webp',
+  },
+  {
+    storyId: 4,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/0ovrnu8bsy3bymvjjltw20d8pe.webp',
+  },
+  {
+    storyId: 4,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/8upg6snerjzzphyvqhevdsspkm.webp',
+  },
+  {
+    storyId: 4,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/g3bb3hbarfwqly0igzaaf4c2fr.webp',
+  },
+  {
+    storyId: 4,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/revyccsmyfddhl99duu9qeeug4.webp',
+  },
+  {
+    storyId: 4,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/rjbslgir1uwfunvao4ocg7ijxv.webp',
+  },
+  {
+    storyId: 4,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/vnpihltk3ukzqqi0kqld6ohy9x.webp',
+  },
+  {
+    storyId: 4,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/ha0ovg6fmnw7njynwofdvi8vie.webp',
+  },
+  {
+    storyId: 4,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/7cntgzxj3c9psbhaes9qmu7aju.webp',
+  },
+  {
+    storyId: 4,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/ziyvh6usjceif0nywr2zeekwtm.webp',
+  },
+  {
+    storyId: 4,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/unwbrdpqdjbdn2usnf0btgguuw.webp',
+  },
+  {
+    storyId: 4,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/zqyjo1qykk9sqzqfnivdyk3ydf%20(1).webp',
+  },
+  {
+    storyId: 4,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/iik8321mmmnddps4rotpp2b1jv.webp',
+  },
+
+  {
+    storyId: 5,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/4ryyivaq9xijgtwa8bdge15kjy.webp',
+  },
+  {
+    storyId: 5,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/ewbpuriki3uvwmyxdn15lhsbzi.webp',
+  },
+  {
+    storyId: 5,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/0ovrnu8bsy3bymvjjltw20d8pe.webp',
+  },
+  {
+    storyId: 5,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/8upg6snerjzzphyvqhevdsspkm.webp',
+  },
+  {
+    storyId: 5,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/g3bb3hbarfwqly0igzaaf4c2fr.webp',
+  },
+  {
+    storyId: 5,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/revyccsmyfddhl99duu9qeeug4.webp',
+  },
+  {
+    storyId: 5,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/rjbslgir1uwfunvao4ocg7ijxv.webp',
+  },
+  {
+    storyId: 5,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/vnpihltk3ukzqqi0kqld6ohy9x.webp',
+  },
+  {
+    storyId: 5,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/ha0ovg6fmnw7njynwofdvi8vie.webp',
+  },
+  {
+    storyId: 5,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/7cntgzxj3c9psbhaes9qmu7aju.webp',
+  },
+  {
+    storyId: 5,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/ziyvh6usjceif0nywr2zeekwtm.webp',
+  },
+  {
+    storyId: 5,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/unwbrdpqdjbdn2usnf0btgguuw.webp',
+  },
+  {
+    storyId: 5,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/zqyjo1qykk9sqzqfnivdyk3ydf%20(1).webp',
+  },
+  {
+    storyId: 5,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/iik8321mmmnddps4rotpp2b1jv.webp',
+  },
+  {
+    storyId: 5,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/4hdbizxevla8igqrnojhtgg4jq.webp',
+  },
+
+  {
+    storyId: 6,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/ewbpuriki3uvwmyxdn15lhsbzi.webp',
+  },
+  {
+    storyId: 6,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/0ovrnu8bsy3bymvjjltw20d8pe.webp',
+  },
+  {
+    storyId: 6,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/8upg6snerjzzphyvqhevdsspkm.webp',
+  },
+  {
+    storyId: 6,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/g3bb3hbarfwqly0igzaaf4c2fr.webp',
+  },
+  {
+    storyId: 6,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/revyccsmyfddhl99duu9qeeug4.webp',
+  },
+  {
+    storyId: 6,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/rjbslgir1uwfunvao4ocg7ijxv.webp',
+  },
+  {
+    storyId: 6,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/vnpihltk3ukzqqi0kqld6ohy9x.webp',
+  },
+  {
+    storyId: 6,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/ha0ovg6fmnw7njynwofdvi8vie.webp',
+  },
+  {
+    storyId: 6,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/7cntgzxj3c9psbhaes9qmu7aju.webp',
+  },
+  {
+    storyId: 6,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/ziyvh6usjceif0nywr2zeekwtm.webp',
+  },
+  {
+    storyId: 6,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/unwbrdpqdjbdn2usnf0btgguuw.webp',
+  },
+  {
+    storyId: 6,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/zqyjo1qykk9sqzqfnivdyk3ydf%20(1).webp',
+  },
+  {
+    storyId: 6,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/iik8321mmmnddps4rotpp2b1jv.webp',
+  },
+  {
+    storyId: 6,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/4hdbizxevla8igqrnojhtgg4jq.webp',
+  },
+  {
+    storyId: 6,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/4ryyivaq9xijgtwa8bdge15kjy.webp',
+  },
+
+  {
+    storyId: 7,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/0ovrnu8bsy3bymvjjltw20d8pe.webp',
+  },
+  {
+    storyId: 7,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/8upg6snerjzzphyvqhevdsspkm.webp',
+  },
+  {
+    storyId: 7,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/g3bb3hbarfwqly0igzaaf4c2fr.webp',
+  },
+  {
+    storyId: 7,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/revyccsmyfddhl99duu9qeeug4.webp',
+  },
+  {
+    storyId: 7,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/rjbslgir1uwfunvao4ocg7ijxv.webp',
+  },
+  {
+    storyId: 7,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/vnpihltk3ukzqqi0kqld6ohy9x.webp',
+  },
+  {
+    storyId: 7,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/ha0ovg6fmnw7njynwofdvi8vie.webp',
+  },
+  {
+    storyId: 7,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/7cntgzxj3c9psbhaes9qmu7aju.webp',
+  },
+  {
+    storyId: 7,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/ziyvh6usjceif0nywr2zeekwtm.webp',
+  },
+  {
+    storyId: 7,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/unwbrdpqdjbdn2usnf0btgguuw.webp',
+  },
+  {
+    storyId: 7,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/zqyjo1qykk9sqzqfnivdyk3ydf%20(1).webp',
+  },
+  {
+    storyId: 7,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/iik8321mmmnddps4rotpp2b1jv.webp',
+  },
+  {
+    storyId: 7,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/4hdbizxevla8igqrnojhtgg4jq.webp',
+  },
+  {
+    storyId: 7,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/4ryyivaq9xijgtwa8bdge15kjy.webp',
+  },
+  {
+    storyId: 7,
+    sourceUrl:
+      'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/storyItem/ewbpuriki3uvwmyxdn15lhsbzi.webp',
+  },
+];

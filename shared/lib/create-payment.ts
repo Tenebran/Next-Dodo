@@ -40,8 +40,7 @@ export async function createPayment(details: CreatePaymentProps) {
       }
     );
     return data;
-  } catch (error: any) {
-    console.error('Error response:', error.response?.data);
+  } catch (error) {
     throw error;
   }
 }

@@ -29,6 +29,7 @@ const Stories: React.FC<Props> = ({ className }) => {
   const [stories, setStories] = React.useState<IStory[]>([]);
   const [open, setOpen] = React.useState(false);
   const [selectedStory, setSelectedStory] = React.useState<IStory>();
+  const [currentIndex, setCurrentIndex] = React.useState(0);
 
   React.useEffect(() => {
     async function fetchStories() {
@@ -53,6 +54,7 @@ const Stories: React.FC<Props> = ({ className }) => {
 
   const onClickStory = (story: IStory) => {
     setSelectedStory(story);
+    setCurrentIndex(0);
 
     if (story.items.length > 0) {
       setOpen(true);
@@ -89,20 +91,35 @@ const Stories: React.FC<Props> = ({ className }) => {
             </Slider>
           </div>
         )}
+        {open && selectedStory && (
+          <div className="fixed inset-0 flex items-center justify-center z-50">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `url(${
+                  selectedStory.items[currentIndex]?.sourceUrl || selectedStory.previewImageUrl
+                })`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                filter: 'blur(10px)',
+                transition: 'background-image 0.5s ease-in-out',
+              }}
+            />
 
-        {open && (
-          <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
-            <div className="relative" style={{ width: 520 }}>
+            <div className="absolute inset-0 bg-black/50"></div>
+
+            <div className="relative w-[520px] z-10">
               <button className="absolute -right-10 -top-5 z-30" onClick={() => setOpen(false)}>
                 <X className="absolute top-0 right-0 w-8 h-8 text-white/50" />
               </button>
 
               <ReactStories
                 onAllStoriesEnd={() => setOpen(false)}
-                stories={selectedStory?.items.map((item) => ({ url: item.sourceUrl })) || []}
-                defaultInterval={3000}
+                stories={selectedStory.items.map((item) => ({ url: item.sourceUrl }))}
+                defaultInterval={8000}
                 width={520}
                 height={800}
+                onStoryStart={(index) => setCurrentIndex(index)}
               />
             </div>
           </div>
