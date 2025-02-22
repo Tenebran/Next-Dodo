@@ -1,7 +1,6 @@
 'use client';
 
 import { ProductWithRelations } from '@/@types/prisma';
-import { cn } from '@/shared/lib/utils';
 import { useCartStore } from '@/shared/store';
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -14,7 +13,7 @@ interface Props {
   product: ProductWithRelations;
 }
 
-const ProductForm: React.FC<Props> = ({ className, product }) => {
+const ProductForm: React.FC<Props> = ({ product }) => {
   const router = useRouter();
   const addCartItem = useCartStore((state) => state.addCartItem);
   const loading = useCartStore((state) => state.loading);
@@ -29,9 +28,9 @@ const ProductForm: React.FC<Props> = ({ className, product }) => {
         ingredientsIds,
       });
       router.back();
-      toast.success(`${product.name} добавлена в корзину`);
+      toast.success(`${product.name} wurde zum Warenkorb hinzugefügt`);
     } catch (e) {
-      toast.error(`Не удалось добавить ${product.name} в корзину`);
+      toast.error(`Fehler: ${product.name} konnte nicht zum Warenkorb hinzugefügt werden`);
       console.error(e);
     }
   };
