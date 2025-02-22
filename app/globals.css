@@ -92,3 +92,15 @@ html {
 #nprogress .spinner-icon {
   @apply border-t-primary border-l-primary !important;
 }
+
+.slick-prev::before {
+  content: '←' !important;
+  color: rgb(232, 97, 0) !important;
+  font-size: 30px !important;
+}
+
+.slick-next::before {
+  content: '→' !important;
+  color: rgb(232, 97, 0) !important;
+  font-size: 30px !important;
+}
