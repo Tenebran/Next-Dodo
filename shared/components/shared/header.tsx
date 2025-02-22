@@ -21,12 +21,12 @@ export const Header: React.FC<PropsType> = ({ className, hasSearch, hasCart }) =
 
   useEffect(() => {
     if (searchParams.has('paid')) {
-      toast.success('Payment successful');
+      toast.success('Zahlung erfolgreich');
       router.replace('/');
     }
 
     if (searchParams.has('verified')) {
-      toast.success('Почта успешно подтверждена!');
+      toast.success('E-Mail erfolgreich bestätigt!');
       router.replace('/');
     }
   }, []);
@@ -39,7 +39,7 @@ export const Header: React.FC<PropsType> = ({ className, hasSearch, hasCart }) =
             <Image alt="logo" width={35} height={35} src="/logo.png" />
             <div>
               <h1 className="text-2xl uppercase font-black">Next Dodo</h1>
-              <p className="text-sm text-gray-400 leading-3">It couldn&apos;t be tastier</p>
+              <p className="text-sm text-gray-400 leading-3">Es könnte nicht leckerer sein</p>
             </div>
           </div>
         </Link>

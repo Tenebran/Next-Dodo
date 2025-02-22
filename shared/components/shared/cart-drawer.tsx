@@ -38,7 +38,7 @@ const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ children }) => {
           {totalAmount > 0 && (
             <SheetHeader>
               <SheetTitle>
-                В Корзине <span className="font-bold">{items.length} товара</span>
+                Im Warenkorb <span className="font-bold">{items.length} Artikel</span>
               </SheetTitle>
             </SheetHeader>
           )}
@@ -50,14 +50,14 @@ const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ children }) => {
                 <DialogDescription></DialogDescription>
               </VisuallyHidden>
               <Image src="/assets/images/empty-box.png" alt="empty cart" width={120} height={120} />
-              <Title size="sm" text="Корзина пуста" className="text-center font-bold my-2" />
+              <Title size="sm" text="Warenkorb ist leer" className="text-center font-bold my-2" />
               <p className="text-center text-neutral-500 mb-5">
-                Добавьте хотя бы одну пиццу, чтобы оформить заказ
+                Fügen Sie mindestens eine Pizza hinzu, um die Bestellung aufzugeben
               </p>
               <SheetClose asChild>
                 <Button className="w-56 h-12 text-base" size="lg">
                   <ArrowLeft className="w-5 mr-2" />
-                  Вернуться назад
+                  Zurückkehren
                 </Button>
               </SheetClose>
             </div>
@@ -97,7 +97,7 @@ const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ children }) => {
                 <div className="w-full">
                   <div className="flex mb-4">
                     <span className="flex flex-1 text-lg text-neutral-500">
-                      Итого
+                      Insgesamt
                       <div className="flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-2" />
                     </span>
                     <span className="font-bold text-lg">{totalAmount} $</span>
@@ -108,7 +108,7 @@ const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ children }) => {
                       onClick={() => setRedirecting(true)}
                       type="submit"
                       className="w-full h-12 text-base">
-                      Оформить заказ
+                      Bestellung aufgeben
                       <ArrowRight className="w-5 ml-2" />
                     </Button>
                   </Link>

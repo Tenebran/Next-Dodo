@@ -18,7 +18,7 @@ const CheckoutSeidbar: React.FC<Props> = ({ totalAmount, loading }) => {
   return (
     <WhiteBlock className="p-6 sticky top-4">
       <div className="flex flex-col gap-1">
-        <span className="text-xl">Итого:</span>
+        <span className="text-xl">Insgesamt:</span>
         {loading ? (
           <Skeleton className=" h-11 w-48" />
         ) : (
@@ -29,7 +29,7 @@ const CheckoutSeidbar: React.FC<Props> = ({ totalAmount, loading }) => {
         title={
           <div className="flex items-center">
             <Package size={18} className="mr-2 text-gray-300" />
-            Стоимость корзины
+            Warenkorbpreis
           </div>
         }
         value={
@@ -40,7 +40,7 @@ const CheckoutSeidbar: React.FC<Props> = ({ totalAmount, loading }) => {
         title={
           <div className="flex items-center">
             <Percent size={18} className="mr-2 text-gray-300" />
-            Налоги
+            Steuern
           </div>
         }
         value={
@@ -51,7 +51,7 @@ const CheckoutSeidbar: React.FC<Props> = ({ totalAmount, loading }) => {
         title={
           <div className="flex items-center">
             <Truck size={18} className="mr-2 text-gray-300" />
-            Доставка
+            Lieferung
           </div>
         }
         value={loading ? <Skeleton className=" h-6 w-16 rounded-[6px]" /> : `${DELIVERY_PRICE} $`}
@@ -61,7 +61,7 @@ const CheckoutSeidbar: React.FC<Props> = ({ totalAmount, loading }) => {
         loading={loading}
         type="submit"
         className="w-full h-14 rounded-2xl mt-6 text-base font-bold">
-        Перейти к оплате
+        Zur Kasse gehen
         <ArrowRight className="w-5 ml-2" />
       </Button>
     </WhiteBlock>

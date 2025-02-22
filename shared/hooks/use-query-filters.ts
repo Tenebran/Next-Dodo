@@ -22,7 +22,6 @@ export const useQueryFilters = (filters: Filters) => {
       if (prevFiltersRef.current !== query) {
         prevFiltersRef.current = query;
         router.push(`?${query}`, { scroll: false });
-        console.log('HELLO');
       }
     }
     isMounted.current = true;

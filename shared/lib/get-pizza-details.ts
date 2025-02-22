@@ -25,6 +25,6 @@ export const getPizzaDetails = (
 ) => {
   const totalPrice = calcTotalPizzaPrice(items, ingredients, size, type, selectedIngredients);
 
-  const textDetails = `${size} см,  ${mapPizzaTypes[type]} тесто`;
+  const textDetails = `${size} cm, ${mapPizzaTypes[type]} Teig`;
   return { totalPrice, textDetails };
 };

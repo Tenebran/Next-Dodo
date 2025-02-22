@@ -24,7 +24,7 @@ const ProfileButton: React.FC<Props> = ({ onCklickSingIn, className }) => {
         <Link href="/profile">
           <Button variant="secondary" className="flex items-center gap-2">
             <CircleUser size={18} />
-            Profile
+            Profil
           </Button>
         </Link>
       )}

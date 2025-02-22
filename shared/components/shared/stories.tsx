@@ -19,9 +19,9 @@ const sliderSettings = {
   dots: false,
   infinite: true,
   speed: 500,
-  slidesToShow: 6, // Количество видимых слайдов
+  slidesToShow: 6,
   slidesToScroll: 1,
-  arrows: true, // Стрелки навигации
+  arrows: true,
   adaptiveHeight: true,
 };
 
@@ -33,12 +33,23 @@ const Stories: React.FC<Props> = ({ className }) => {
   React.useEffect(() => {
     async function fetchStories() {
       const data = await Api.stories.getAll();
-      console.log('Fetched stories:', data); // Проверяем, загружаются ли данные
       setStories(data);
     }
 
     fetchStories();
   }, []);
+
+  React.useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
 
   const onClickStory = (story: IStory) => {
     setSelectedStory(story);
@@ -80,7 +91,7 @@ const Stories: React.FC<Props> = ({ className }) => {
         )}
 
         {open && (
-          <div className="absolute left-0 top-0 w-full h-full bg-black/80 flex items-center justify-center z-50">
+          <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
             <div className="relative" style={{ width: 520 }}>
               <button className="absolute -right-10 -top-5 z-30" onClick={() => setOpen(false)}>
                 <X className="absolute top-0 right-0 w-8 h-8 text-white/50" />

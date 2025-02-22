@@ -45,7 +45,7 @@ const SeachInput: React.FC<Props> = ({ className }) => {
         <input
           className="rounded-2xl outline-none w-full bg-gray-100 pl-11 "
           type="text"
-          placeholder="Найти пиццу..."
+          placeholder="Pizza suchen..."
           value={searchQuery}
           onFocus={() => setFocused(true)}
           onChange={(e) => setSearchQuery(e.target.value)}

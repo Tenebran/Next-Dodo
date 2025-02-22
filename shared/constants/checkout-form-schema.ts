@@ -1,18 +1,27 @@
 import { z } from 'zod';
 
 export const checkoutFormSchema = z.object({
-  firstName: z.string().min(2, { message: 'Имя должно содержать не менее 2-х символов' }).trim(),
-  lastName: z.string().min(2, { message: 'Фамилия должна содержать не менее 2-х символов' }).trim(),
-  email: z.string().email({ message: 'Некорректный адрес электронной почты' }).trim(),
+  firstName: z
+    .string()
+    .min(2, { message: 'Der Vorname muss mindestens 2 Zeichen enthalten' })
+    .trim(),
+  lastName: z
+    .string()
+    .min(2, { message: 'Der Nachname muss mindestens 2 Zeichen enthalten' })
+    .trim(),
+  email: z.string().email({ message: 'Ungültige E-Mail-Adresse' }).trim(),
   phone: z
     .string()
-    .min(10, { message: 'Введите корректный номер телефона' })
-    .regex(/^\+?[0-9\s\-]+$/, { message: 'Введите номер телефона в корректном формате' }),
+    .min(10, { message: 'Bitte geben Sie eine gültige Telefonnummer ein' })
+    .regex(/^\+?[0-9\s\-]+$/, {
+      message: 'Bitte geben Sie die Telefonnummer im korrekten Format ein',
+    }),
   address: z
     .string()
-    .min(1, { message: 'Адрес обязателен' })
-    .min(5, { message: 'Адрес должен содержать не менее 5 символов' })
+    .min(1, { message: 'Die Adresse ist erforderlich' })
+    .min(5, { message: 'Die Adresse muss mindestens 5 Zeichen enthalten' })
     .trim(),
   comment: z.string().optional(),
 });
+
 export type TCheckoutFormValues = z.infer<typeof checkoutFormSchema>;

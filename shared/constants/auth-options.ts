@@ -67,7 +67,7 @@ export const authOptions: AuthOptions = {
         const findUser = await prisma.user.findFirst({
           where: {
             OR: [
-              { provider: account.provider, providerId: account.providerAccountId }, // 🔹 Проверь `providerId` в Prisma!
+              { provider: account.provider, providerId: account.providerAccountId },
               { email: user.email },
             ],
           },
@@ -84,7 +84,6 @@ export const authOptions: AuthOptions = {
           return true;
         }
 
-        // 🔹 Теперь `await` есть, и пользователь сохраняется в базе!
         await prisma.user.create({
           data: {
             email: user.email,
