@@ -25,12 +25,11 @@ const CheckboxFiltersGroup: React.FC<Props> = ({
   items,
   defaultItem,
   limit = 5,
-  searchInputPlaceholder = 'Поиск...',
+  searchInputPlaceholder = 'Suchen...',
   onCklickCheckbox,
   className,
   loading,
   selected,
-  name,
 }) => {
   const [showAll, setShowAll] = useState(false);
   const [searchValue, setSeatchValue] = useState('');
@@ -85,7 +84,7 @@ const CheckboxFiltersGroup: React.FC<Props> = ({
       {items.length > limit && (
         <div className={showAll ? 'border-t-neutral-100 mt-4' : ''}>
           <button onClick={() => setShowAll(!showAll)} className="text-primary mt-3">
-            {showAll ? 'Скрыть' : '+ Показать все'}
+            {showAll ? 'Verbergen' : '+ Alles anzeigen'}
           </button>
         </div>
       )}

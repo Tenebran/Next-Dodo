@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
     if (isSucceeded) {
       await sendEmail(
         'sergejgarkusha94@gmail.com',
-        `Next Dodo / Ваш заказ No${order.id} успешно оплачен!`,
+        `Next Dodo / Ihre Bestellung Nr.${order.id} wurde erfolgreich bezahlt!`,
         OrderSuccessTamplate({
           orderId: order.id,
           items: items,
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
     } else {
       await sendEmail(
         'sergejgarkusha94@gmail.com',
-        `Next Dodo / Ваш заказ No${order.id} отменен!`,
+        `Next Dodo / Ihre Bestellung Nr.${order.id} wurde storniert!`,
         OrderSuccessTamplate({
           orderId: order.id,
           items: items,

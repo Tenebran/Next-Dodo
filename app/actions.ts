@@ -79,7 +79,7 @@ export async function createOrder(data: TCheckoutFormValues) {
     const paymentData = await createPayment({
       orderId: order.id,
       amount: order.totalAmount,
-      description: `Next Dodo / Оплата заказа #${order.id}`,
+      description: `Next Dodo / Zahlung für Bestellung #${order.id}`,
     });
 
     if (!paymentData) throw new Error('Payment data not found');
@@ -97,13 +97,14 @@ export async function createOrder(data: TCheckoutFormValues) {
 
     await sendEmail(
       'sergejgarkusha94@gmail.com',
-      `Next Dodo / Оплатите заказ #${order.id}`,
+      `Next Dodo / Bezahlen Sie die Bestellung #${order.id}`,
       PayOrderTamplate({
         orderId: order.id,
         totalAmount: order.totalAmount,
         paymentUrl: paymentUrl,
       })
     );
+
     return paymentUrl;
   } catch (error) {
     console.error('createOrder server error', error);
@@ -149,9 +150,9 @@ export async function registerUser(body: Prisma.UserCreateInput) {
 
     if (user) {
       if (!user.verified) {
-        throw new Error('Почта не подтверждена');
+        throw new Error('E-Mail nicht bestätigt');
       }
-      throw new Error('Пользователь уже существует');
+      throw new Error('Benutzer existiert bereits');
     }
 
     const createdUser = await prisma.user.create({
@@ -169,7 +170,7 @@ export async function registerUser(body: Prisma.UserCreateInput) {
 
     await sendEmail(
       createdUser.email,
-      `Next Dodo |  Подтвердите регистрацию`,
+      `Next Dodo | Bestätigen Sie Ihre Registrierung`,
       VerificationUserTemplate({ code })
     );
   } catch (err) {

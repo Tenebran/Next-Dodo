@@ -12,8 +12,8 @@ export const OrderSuccessTamplate: React.FC<EmailTemplateProps> = ({
   items,
 }) => (
   <div>
-    <h1>Спасибо за покупку!</h1>
-    <p>Ваш заказ #${orderId} оплачен. Список товаров%:</p>
+    <h1>Danke für Ihren Einkauf!</h1>
+    <p>Ihre Bestellung Nr. ${orderId} wurde bezahlt. Artikelliste:</p>
     <hr />
     <ul>
       {items.map((item) => (

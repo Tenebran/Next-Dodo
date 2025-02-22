@@ -2,22 +2,22 @@ import { z } from 'zod';
 
 export const passwordSchema = z
   .string()
-  .min(6, { message: 'Пароль должен содержать не менее 6 символов' });
+  .min(6, { message: 'Das Passwort muss mindestens 6 Zeichen enthalten' });
 
 export const formLoginSchema = z.object({
-  email: z.string().email({ message: 'Некорректный адрес электронной почты' }).trim(),
+  email: z.string().email({ message: 'Ungültige E-Mail-Adresse' }).trim(),
   password: passwordSchema,
 });
 
 export const formRegisterSchema = formLoginSchema
   .merge(
     z.object({
-      fullName: z.string().min(2, { message: 'Введите имя и фамилию' }),
+      fullName: z.string().min(2, { message: 'Bitte geben Sie Ihren Vor- und Nachnamen ein' }),
       confirmPassword: passwordSchema,
     })
   )
   .refine((data) => data.password === data.confirmPassword, {
-    message: 'Пароли не совпадают',
+    message: 'Passwörter stimmen nicht überein',
     path: ['confirmPassword'],
   });
 

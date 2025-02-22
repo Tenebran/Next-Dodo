@@ -34,7 +34,7 @@ const ProductCard: React.FC<Props> = ({ className, imageUrl, id, name, price, in
           </span>
           <Button className="text-base font-bold" variant="secondary">
             <Plus size={20} className="mr-1" />
-            Добавить
+            Hinzufügen
           </Button>
         </div>
       </Link>

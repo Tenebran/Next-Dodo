@@ -12,11 +12,10 @@ export const PayOrderTamplate: React.FC<EmailTemplateProps> = ({
   paymentUrl,
 }) => (
   <div>
-    <h1>Заказ #${orderId}</h1>
+    <h1>Bestellung Nr. ${orderId}</h1>
     <p>
-      Оплатите заказ на сумму <b>${totalAmount} $</b>. перейдите{' '}
-      <a href={paymentUrl}>по этой ссылке</a>
-      для оплаты заказа.
+      Bitte bezahlen Sie die Bestellung in Höhe von <b>${totalAmount} $</b>. Gehen Sie{' '}
+      <a href={paymentUrl}>über diesen Link</a>, um die Bestellung zu bezahlen.
     </p>
   </div>
 );

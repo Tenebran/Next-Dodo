@@ -22,16 +22,16 @@ const Filters: React.FC<Props> = ({ className }) => {
 
   return (
     <div className={cn('', className)}>
-      <Title text="Фильтрация" size="sm" className="mb-5 font-bold" />
+      <Title text="Filterung" size="sm" className="mb-5 font-bold" />
 
       <div className="flex flex-col gap-4">
         <CheckboxFiltersGroup
-          title="Тип теста"
+          title="Teigart"
           className="mb-3"
           limit={6}
           items={[
-            { text: 'Тонкое', value: '1' },
-            { text: 'Традиционное', value: '2' },
+            { text: 'Dünn', value: '1' },
+            { text: 'Traditionell', value: '2' },
           ]}
           loading={loading}
           onCklickCheckbox={filters.setPizzaTypes}
@@ -40,13 +40,13 @@ const Filters: React.FC<Props> = ({ className }) => {
         />
 
         <CheckboxFiltersGroup
-          title="Размеры"
+          title="Größen"
           className="mb-3"
           limit={6}
           items={[
-            { text: '20 см', value: '20' },
-            { text: '30 см', value: '30' },
-            { text: '40 см', value: '40' },
+            { text: '20 cm', value: '20' },
+            { text: '30 cm', value: '30' },
+            { text: '40 cm', value: '40' },
           ]}
           loading={loading}
           onCklickCheckbox={filters.setSizes}
@@ -83,7 +83,7 @@ const Filters: React.FC<Props> = ({ className }) => {
       </div>
 
       <CheckboxFiltersGroup
-        title="Ингридиенты"
+        title="Zutaten"
         className="mt-5"
         limit={6}
         defaultItem={items.slice(0, 6)}

@@ -53,7 +53,7 @@ export default function CheckoutPage() {
     try {
       setSubmitting(true);
       const url = await createOrder(data);
-      toast.success('Заказ успешно оформлен! Переход на оплату....', {
+      toast.success('Bestellung erfolgreich aufgegeben! Weiterleitung zur Zahlung...', {
         icon: '🎉',
       });
 
@@ -61,7 +61,7 @@ export default function CheckoutPage() {
         location.href = url;
       }
     } catch {
-      toast.error('Не удалось создать заказ', {
+      toast.error('Bestellung konnte nicht erstellt werden', {
         icon: '🚫',
       });
       setSubmitting(false);
@@ -70,7 +70,7 @@ export default function CheckoutPage() {
 
   return (
     <Container className="mt-10">
-      <Title text="Оформление Заказа" className="font-extrabold mb-8 text-[36px]" />
+      <Title text="Bestellung aufgeben" className="font-extrabold mb-8 text-[36px]" />
       <FormProvider {...form}>
         <div className="flex gap-10">
           <div className="flex flex-col gap-10 flex-1 mb-20">
