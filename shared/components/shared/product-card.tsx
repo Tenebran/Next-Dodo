@@ -30,7 +30,7 @@ const ProductCard: React.FC<Props> = ({ className, imageUrl, id, name, price, in
         </p>
         <div className="flex justify-between items-center mt-4 bg-co">
           <span className="text-[20px]">
-            от <b>{price} $</b>
+            от <b>{price} €</b>
           </span>
           <Button className="text-base font-bold" variant="secondary">
             <Plus size={20} className="mr-1" />

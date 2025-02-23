@@ -22,7 +22,7 @@ const CheckoutSeidbar: React.FC<Props> = ({ totalAmount, loading }) => {
         {loading ? (
           <Skeleton className=" h-11 w-48" />
         ) : (
-          <span className="text-[34px] h-11 font-extrabold">{totalPrice?.toFixed(2) ?? 0} $</span>
+          <span className="text-[34px] h-11 font-extrabold">{totalPrice?.toFixed(2) ?? 0} €</span>
         )}
       </div>
       <CheckoutItemDetails
@@ -33,7 +33,7 @@ const CheckoutSeidbar: React.FC<Props> = ({ totalAmount, loading }) => {
           </div>
         }
         value={
-          loading ? <Skeleton className=" h-6 w-16 rounded-[6px]" /> : `${totalAmount.toFixed(2)} $`
+          loading ? <Skeleton className=" h-6 w-16 rounded-[6px]" /> : `${totalAmount.toFixed(2)} €`
         }
       />
       <CheckoutItemDetails
@@ -44,7 +44,7 @@ const CheckoutSeidbar: React.FC<Props> = ({ totalAmount, loading }) => {
           </div>
         }
         value={
-          loading ? <Skeleton className=" h-6 w-16 rounded-[6px]" /> : `${vatPrice.toFixed(2)} $`
+          loading ? <Skeleton className=" h-6 w-16 rounded-[6px]" /> : `${vatPrice.toFixed(2)} €`
         }
       />
       <CheckoutItemDetails
@@ -54,7 +54,7 @@ const CheckoutSeidbar: React.FC<Props> = ({ totalAmount, loading }) => {
             Lieferung
           </div>
         }
-        value={loading ? <Skeleton className=" h-6 w-16 rounded-[6px]" /> : `${DELIVERY_PRICE} $`}
+        value={loading ? <Skeleton className=" h-6 w-16 rounded-[6px]" /> : `${DELIVERY_PRICE} €`}
       />
 
       <Button

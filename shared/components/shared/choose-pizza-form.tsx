@@ -94,7 +94,7 @@ const ChoosePizzaForm: React.FC<Props> = ({
           loading={loading}
           onClick={handlerClickAddCart}
           className="h-[55px] px-10 text-base rounded-[18px] w-full mt-5">
-          In den Warenkorb legen {totalPrice.toFixed(2)} $
+          In den Warenkorb legen {totalPrice.toFixed(2)} €
         </Button>
       </div>
     </div>

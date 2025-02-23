@@ -26,7 +26,7 @@ const IngredientItem: React.FC<Props> = ({ className, imageUrl, name, active, pr
 
       <img src={imageUrl} alt={name} height={110} width={110} />
       <span className="text-xs mb-1">{name}</span>
-      <span className="font-bold">{price} $</span>
+      <span className="font-bold">{price} €</span>
     </div>
   );
 };

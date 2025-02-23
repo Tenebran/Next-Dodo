@@ -100,7 +100,7 @@ const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ children }) => {
                       Insgesamt
                       <div className="flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-2" />
                     </span>
-                    <span className="font-bold text-lg">{totalAmount} $</span>
+                    <span className="font-bold text-lg">{totalAmount} €</span>
                   </div>
                   <Link href="/checkout">
                     <Button
