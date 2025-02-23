@@ -42,6 +42,7 @@
     "@radix-ui/react-slider": "^1.2.2",
     "@radix-ui/react-slot": "^1.1.1",
     "@radix-ui/react-visually-hidden": "^1.1.2",
+    "@sendgrid/mail": "^8.1.4",
     "@types/bcrypt": "^5.0.2",
     "@types/qs": "^6.9.18",
     "axios": "^1.7.9",

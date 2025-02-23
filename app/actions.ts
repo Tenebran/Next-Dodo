@@ -96,7 +96,7 @@ export async function createOrder(data: TCheckoutFormValues) {
     const paymentUrl = paymentData.confirmation.confirmation_url;
 
     await sendEmail(
-      'sergejgarkusha94@gmail.com',
+      order.email,
       `Next Dodo / Bezahlen Sie die Bestellung #${order.id}`,
       PayOrderTamplate({
         orderId: order.id,
@@ -162,12 +162,10 @@ export async function registerUser(body: Prisma.UserCreateInput) {
         password: hashSync(body.password, 10),
       },
     });
-
     const code = Math.floor(100000 + Math.random() * 900000).toString();
     await prisma.verificationCode.create({
       data: { code, userId: createdUser.id },
     });
-
     await sendEmail(
       createdUser.email,
       `Next Dodo | Bestätigen Sie Ihre Registrierung`,
