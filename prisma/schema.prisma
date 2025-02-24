@@ -36,9 +36,9 @@ model Category {
 model Product {
     id Int @id @default(autoincrement())
 
-    name     String
-    imageUrl String
-
+    name        String
+    imageUrl    String
+    description String?
     ingredients Ingredient[]
     items       ProductItem[]
 

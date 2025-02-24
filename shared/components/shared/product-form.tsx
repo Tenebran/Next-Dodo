@@ -39,6 +39,7 @@ const ProductForm: React.FC<Props> = ({ product }) => {
     return (
       <ChoosePizzaForm
         name={product.name}
+        description={product.description}
         imageUrl={product.imageUrl}
         ingredients={product.ingredients}
         items={product.items}

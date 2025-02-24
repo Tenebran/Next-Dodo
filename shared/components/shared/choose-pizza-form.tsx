@@ -16,6 +16,7 @@ interface Props {
   className?: string;
   ingredients: Ingredient[];
   items: ProductItem[];
+  description: string;
   onSubmit: (itemId: number, ingredients: number[]) => void;
   size?: 20 | 30 | 40;
   loading: boolean;
@@ -29,6 +30,7 @@ const ChoosePizzaForm: React.FC<Props> = ({
   items,
   onSubmit,
   loading,
+  description,
 }) => {
   const {
     size,
@@ -62,6 +64,7 @@ const ChoosePizzaForm: React.FC<Props> = ({
 
       <div className="w-[490px] bg-[#fbfafa] p-7">
         <Title text={name} size="md" className="font-extrabold mb-1" />
+        <p className="text-gray-400">{description}</p>
         <p className="text-gray-400">{textDetails}</p>
         <GroupVariants
           items={availablePizzas}

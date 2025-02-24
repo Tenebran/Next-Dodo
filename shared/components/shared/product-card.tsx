@@ -15,9 +15,10 @@ interface Props {
   price: number;
   ingredients: Ingredient[];
   className?: string;
+  description?: string;
 }
 
-const ProductCard: React.FC<Props> = ({ className, imageUrl, id, name, price, ingredients }) => {
+const ProductCard: React.FC<Props> = ({ className, imageUrl, id, name, price, description }) => {
   return (
     <div className={cn('', className)}>
       <Link href={`/product/${id}`}>
@@ -25,9 +26,7 @@ const ProductCard: React.FC<Props> = ({ className, imageUrl, id, name, price, in
           <img className="w-[256px] h-[215px]" src={imageUrl} alt={name} />
         </div>
         <Title text={name} size="sm" className="mb-1 mt-3 fonе-bold" />
-        <p className="text-sm text-gray-400">
-          {ingredients.map((ingredient) => ingredient.name).join(', ')}
-        </p>
+        <p className="text-sm text-gray-400">{description}</p>
         <div className="flex justify-between items-center mt-4 bg-co">
           <span className="text-[20px]">
             от <b>{price} €</b>
