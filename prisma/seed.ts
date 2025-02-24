@@ -8,15 +8,18 @@ const generateProductItem = ({
   pizzaType,
   size,
   price,
+  imageUrl,
 }: {
   productId: number;
   pizzaType?: 1 | 2;
   size?: 20 | 30 | 40;
   price?: number;
+  imageUrl?: string;
 }) => {
   return {
     productId,
     pizzaType,
+    imageUrl,
     size,
     price,
   } as Prisma.ProductItemUncheckedCreateInput;
@@ -96,22 +99,106 @@ async function up() {
   await prisma.productItem.createMany({
     data: [
       // Пицца "Пепперони фреш"
-      generateProductItem({ productId: pizza1.id, pizzaType: 1, size: 20, price: 6.99 }),
-      generateProductItem({ productId: pizza1.id, pizzaType: 2, size: 30, price: 8.99 }),
-      generateProductItem({ productId: pizza1.id, pizzaType: 2, size: 40, price: 12.99 }),
+      generateProductItem({
+        productId: pizza1.id,
+        pizzaType: 1,
+        size: 20,
+        price: 6.99,
+        imageUrl:
+          'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/pizza/pepironi-fresh/11ee7d612f98bc0ea828957caff9c8ec.webp',
+      }),
+      generateProductItem({
+        productId: pizza1.id,
+        pizzaType: 2,
+        size: 30,
+        price: 8.99,
+        imageUrl:
+          'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/pizza/pepironi-fresh/11ee7d612ff49f2c98064fb647c3aa86.webp',
+      }),
+      generateProductItem({
+        productId: pizza1.id,
+        pizzaType: 2,
+        size: 40,
+        price: 12.99,
+        imageUrl:
+          'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/pizza/pepironi-fresh/11ee7d61304faf5a98a6958f2bb2d260.webp',
+      }),
 
       // Пицца "Сырная"
-      generateProductItem({ productId: pizza2.id, pizzaType: 1, size: 20, price: 5.99 }),
-      generateProductItem({ productId: pizza2.id, pizzaType: 1, size: 30, price: 7.99 }),
-      generateProductItem({ productId: pizza2.id, pizzaType: 1, size: 40, price: 11.99 }),
-      generateProductItem({ productId: pizza2.id, pizzaType: 2, size: 20, price: 6.99 }),
-      generateProductItem({ productId: pizza2.id, pizzaType: 2, size: 30, price: 8.99 }),
-      generateProductItem({ productId: pizza2.id, pizzaType: 2, size: 40, price: 12.99 }),
+      generateProductItem({
+        productId: pizza2.id,
+        pizzaType: 1,
+        size: 20,
+        price: 5.99,
+        imageUrl:
+          'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/pizza/kasePizza/11ee7d610cf7e265b7c72be5ae757ca7.png',
+      }),
+      generateProductItem({
+        productId: pizza2.id,
+        pizzaType: 1,
+        size: 30,
+        price: 7.99,
+        imageUrl:
+          'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/pizza/kasePizza/11ee7d610d2925109ab2e1c92cc5383c.png',
+      }),
+      generateProductItem({
+        productId: pizza2.id,
+        pizzaType: 1,
+        size: 40,
+        price: 11.99,
+        imageUrl:
+          'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/pizza/kasePizza/11ee7d610d91679bb519f38c3f45880f.png',
+      }),
+      generateProductItem({
+        productId: pizza2.id,
+        pizzaType: 2,
+        size: 20,
+        price: 6.99,
+        imageUrl:
+          'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/pizza/kasePizza/11ee7d610d5dbb14a551b640b90776fc.png',
+      }),
+      generateProductItem({
+        productId: pizza2.id,
+        pizzaType: 2,
+        size: 30,
+        price: 8.99,
+        imageUrl:
+          'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/pizza/kasePizza/11ee7d610d5dbb14a551b640b90776fc.png',
+      }),
+      generateProductItem({
+        productId: pizza2.id,
+        pizzaType: 2,
+        size: 40,
+        price: 12.99,
+        imageUrl:
+          'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/pizza/kasePizza/11ee7d610dbefef68ade96df563888b4.png',
+      }),
 
       // Пицца "Чоризо фреш"
-      generateProductItem({ productId: pizza3.id, pizzaType: 1, size: 20, price: 9.99 }),
-      generateProductItem({ productId: pizza3.id, pizzaType: 2, size: 30, price: 12.99 }),
-      generateProductItem({ productId: pizza3.id, pizzaType: 2, size: 40, price: 15.99 }),
+      generateProductItem({
+        productId: pizza3.id,
+        pizzaType: 1,
+        size: 20,
+        price: 9.99,
+        imageUrl:
+          'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/pizza/chorizo/11ee7d61703f8b47b1e4933820a7d91f.png',
+      }),
+      generateProductItem({
+        productId: pizza3.id,
+        pizzaType: 2,
+        size: 30,
+        price: 12.99,
+        imageUrl:
+          'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/pizza/chorizo/11ee7d61709f9f34a0b85f25ecdb286d.png',
+      }),
+      generateProductItem({
+        productId: pizza3.id,
+        pizzaType: 2,
+        size: 40,
+        price: 15.99,
+        imageUrl:
+          'https://raw.githubusercontent.com/Tenebran/project-assets/refs/heads/master/next%20dodo/pizza/chorizo/11ee7d6171059e7d8d5af72d04721d66.png',
+      }),
 
       // Остальные продукты
       generateProductItem({ productId: 1, price: 5.99 }),
@@ -177,6 +264,8 @@ async function down() {
   await prisma.$executeRaw`TRUNCATE TABLE "Ingredient" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "Product" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "ProductItem" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "Story" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "StoryItem" RESTART IDENTITY CASCADE`;
 }
 
 async function main() {

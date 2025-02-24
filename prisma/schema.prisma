@@ -67,6 +67,7 @@ model ProductItem {
     price     Float
     size      Int?
     pizzaType Int?
+    imageUrl  String?
 
     cartItems CartItem[]
 

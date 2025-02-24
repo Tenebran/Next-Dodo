@@ -10,7 +10,8 @@
     "prisma:push": "prisma db push",
     "prisma:studio": "prisma studio",
     "prisma:seed": "prisma db seed",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+     "prisma:reset": "prisma migrate reset --force && prisma db seed"
   },
   "overrides": {
     "react": "^19.0.0",

@@ -41,6 +41,7 @@ const ChoosePizzaForm: React.FC<Props> = ({
     addIngredient,
     availablePizzas,
     currentItemId,
+    currentImageUrl,
   } = usePizzaOptions(items);
 
   const { totalPrice, textDetails } = getPizzaDetails(
@@ -60,7 +61,7 @@ const ChoosePizzaForm: React.FC<Props> = ({
 
   return (
     <div className={cn('flex flex-1', className)}>
-      <PizzaImage imageUrl={imageUrl} size={size} />
+      <PizzaImage imageUrl={currentImageUrl} size={size} />
 
       <div className="w-[490px] bg-[#fbfafa] p-7">
         <Title text={name} size="md" className="font-extrabold mb-1" />
